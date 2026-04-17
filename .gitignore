@@ -1,5 +1,6 @@
 # Compiled class file
 *.class
+bin/
 
 # Log file
 *.log
@@ -10,7 +11,7 @@
 # Mobile Tools for Java (J2ME)
 .mtj.tmp/
 
-# Package Files #
+# Package Files
 *.jar
 *.war
 *.nar
@@ -19,6 +20,21 @@
 *.tar.gz
 *.rar
 
-# virtual machine crash logs, see http://www.java.com/en/download/help/error_hotspot.xml
+# virtual machine crash logs
 hs_err_pid*
 replay_pid*
+
+# =========================
+# Custom IDEs (IntelliJ IDEA)
+# =========================
+.idea/
+*.iml
+out/
+
+# =========================
+# Custom IDEs (Eclipse)
+# =========================
+.metadata/
+.classpath
+.project
+.settings/
