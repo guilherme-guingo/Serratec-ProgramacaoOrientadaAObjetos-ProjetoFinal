@@ -29,7 +29,7 @@ public class CalcularIR implements CalcularImposto{
 		return (base * aliquota) - parcela ;
 	}
 	
-	public double calcAliquota() {
+	private double calcAliquota() {
 		if(salario <= 2259.20) {
 			return 0;
 			
@@ -48,7 +48,7 @@ public class CalcularIR implements CalcularImposto{
 		
 	}
 	
-	public double calcParcela() {
+	private double calcParcela() {
 		if(salario <= 2259.20) {
 			return 0;
 			

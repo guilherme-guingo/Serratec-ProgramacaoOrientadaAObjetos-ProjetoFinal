@@ -24,7 +24,7 @@ public class CalcularINSS implements CalcularImposto{
 		 return (salario * aliquota) - parcela;
 		}
 	
-	public double calcAliquota() {
+	private double calcAliquota() {
 		if(salario <= 1.518) {
 			return 7.5/100;
 			
@@ -43,7 +43,7 @@ public class CalcularINSS implements CalcularImposto{
 		
 	}
 	
-	public double calcParcela() {
+	private double calcParcela() {
 		if(salario <= 1.518) {
 			return 0;	
 			
