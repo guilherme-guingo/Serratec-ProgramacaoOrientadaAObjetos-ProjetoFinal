@@ -10,10 +10,10 @@ import br.com.folhapag.model.Dependente;
 import br.com.folhapag.model.Funcionario;
 
 public class MenuView {
-	
 	Scanner sc = new Scanner(System.in);
 	
 	public Funcionario entradaDadosManual() {
+
 		List<Dependente> dependentes = new ArrayList();
 		
 		System.out.println("Informe o nome do funcionário: ");
