@@ -135,19 +135,17 @@ public class FolhaManualView {
 	private Parentesco lerParentesco() {
 		while(true) {
 		System.out.println("SELECIONE O GRAU DE PARENTESCO\n" 
-				+ "1 - PAI \n" 
-				+ "2 - MÃE \n/"
-				+ "3 - FILHO \n" 
-				+ "4 - CONJUGE \n" 
-				+ "5 - OUTROS \n");
+				+ "1 - PAIS \n" 
+				+ "2 - FILHOS \n" 
+				+ "3 - CONJUGE \n" 
+				+ "4 - OUTROS \n");
 		int respParentesco = sc.nextInt();
 		sc.nextLine();
 		Parentesco p = switch (respParentesco) {
-		case 1 -> Parentesco.PAI;
-		case 2 -> Parentesco.MAE;
-		case 3 -> Parentesco.FILHO;
-		case 4 -> Parentesco.CONJUGE;
-		case 5 -> Parentesco.OUTROS;
+		case 1 -> Parentesco.PAIS;
+		case 2 -> Parentesco.FILHOS;
+		case 3 -> Parentesco.CONJUGE;
+		case 4 -> Parentesco.OUTROS;
 		default -> throw new IllegalArgumentException("Opção inválida");
 		};
 		return p;
