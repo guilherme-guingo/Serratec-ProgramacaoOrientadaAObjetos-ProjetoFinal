@@ -25,7 +25,7 @@ public class CalcularINSS implements CalcularImposto{
 		}
 	
 	private double calcAliquota() {
-		if(salario <= 1.518) {
+		if(salario <= 1518.00) {
 			return 7.5/100;
 			
 		}else if(salario <= 2793.88) {
