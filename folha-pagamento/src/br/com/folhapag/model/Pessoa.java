@@ -2,20 +2,27 @@ package br.com.folhapag.model;
 
 import java.time.LocalDate;
 
-import br.com.folhapag.exception.CPFInvalido;
-
-public abstract class Pessoa {
-    private String nome;
-    private LocalDate nascimento;
-    private String cpf;
+public class Pessoa {
     
-    public Pessoa(String nome, LocalDate nascimento, String cpf) throws CPFInvalido {
-        super();
-        this.nome = nome;
-        this.nascimento = nascimento;
-        setCpf(cpf);
+    private String nome;
+    private String cpf;
+    private LocalDate dataNascimento;
+
+    // 1. CONSTRUTOR VAZIO (O segredo para resolver o seu erro!)
+    // Ele permite que a classe Funcionario seja criada com "new Funcionario()"
+    public Pessoa() {
     }
 
+    // 2. CONSTRUTOR COM PARÂMETROS
+    // Útil quando você já tem todos os dados em mãos
+    public Pessoa(String nome, String cpf, LocalDate dataNascimento) {
+        this.nome = nome;
+        this.cpf = cpf;
+        this.dataNascimento = dataNascimento;
+    }
+
+    // 3. GETTERS E SETTERS
+    // Essenciais para o LeitorCSV conseguir preencher os dados um por um
     public String getNome() {
         return nome;
     }
@@ -24,24 +31,19 @@ public abstract class Pessoa {
         this.nome = nome;
     }
 
-    public LocalDate getNascimento() {
-        return nascimento;
-    }
-
-    public void setNascimento(LocalDate nascimento) {
-        this.nascimento = nascimento;
-    }
-
     public String getCpf() {
         return cpf;
     }
 
-    public void setCpf(String cpf) throws CPFInvalido {
-        String cpfLimpo = (cpf != null) ? cpf.replaceAll("\\D", "") : ""; 
+    public void setCpf(String cpf) {
+        this.cpf = cpf;
+    }
 
-        if (cpfLimpo.length() != 11) {
-            throw new CPFInvalido("O CPF " + cpf + " é inválido! Deve conter 11 dígitos.");
-        }
-        this.cpf = cpfLimpo;
+    public LocalDate getDataNascimento() {
+        return dataNascimento;
+    }
+
+    public void setDataNascimento(LocalDate dataNascimento) {
+        this.dataNascimento = dataNascimento;
     }
 }
