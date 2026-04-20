@@ -4,40 +4,48 @@ import java.time.LocalDate;
 import java.util.ArrayList;
 import java.util.List;
 
-public class Funcionario extends Pessoa{
-	private double salarioBruto;
-	private Departamento departamento;
-	private List<Dependente> dependentes;
-	
-	public Funcionario(String nome, LocalDate nascimento, String cpf, double salarioBruto, Departamento departamento) {
-		super(nome, nascimento, cpf);
-		this.salarioBruto = salarioBruto;
-		this.departamento = departamento;
-		this.dependentes = new ArrayList();
-	}
+import br.com.folhapag.exception.CPFInvalido;
+import br.com.folhapag.exception.SalarioInvalido;
 
-	public double getSalarioBruto() {
-		return salarioBruto;
-	}
+public class Funcionario extends Pessoa {
+    private double salarioBruto;
+    private Departamento departamento;
+    private List<Dependente> dependentes;
+    
+    public Funcionario(String nome, LocalDate nascimento, String cpf, double salarioBruto, Departamento departamento) 
+            throws CPFInvalido, SalarioInvalido {
+        
+        super(nome, nascimento, cpf); 
+        this.departamento = departamento;
+        this.dependentes = new ArrayList<>();
 
-	public void setSalarioBruto(double salarioBruto) {
-		this.salarioBruto = salarioBruto;
-	}
+        setSalarioBruto(salarioBruto);
+    }
 
-	public Departamento getDepartamento() {
-		return departamento;
-	}
+    public double getSalarioBruto() {
+        return salarioBruto;
+    }
 
-	public void setDepartamento(Departamento departamento) {
-		this.departamento = departamento;
-	}
+    public void setSalarioBruto(double salarioBruto) throws SalarioInvalido {
+        if (salarioBruto < 1412.00) {
+            throw new SalarioInvalido("Salário inválido. Mínimo é R$ 1.412,00.");
+        }
+        this.salarioBruto = salarioBruto;
+    }
 
-	public List<Dependente> getDependentes() {
-		return dependentes;
-	}
+    public Departamento getDepartamento() {
+        return departamento;
+    }
 
-	public void setDependentes(List<Dependente> dependentes) {
-		this.dependentes = dependentes;
-	}
-	
+    public void setDepartamento(Departamento departamento) {
+        this.departamento = departamento;
+    }
+
+    public List<Dependente> getDependentes() {
+        return dependentes;
+    }
+
+    public void setDependentes(List<Dependente> dependentes) {
+        this.dependentes = dependentes;
+    }
 }

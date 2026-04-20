@@ -3,11 +3,14 @@ package br.com.folhapag.model;
 import java.time.LocalDate;
 
 import br.com.folhapag.enums.Parentesco;
+import br.com.folhapag.exception.CPFInvalido;
+
 
 public class Dependente extends Pessoa {
 	private Parentesco parentesco;
 	private Funcionario funcionario;
-	public Dependente(String nome, LocalDate nascimento, String cpf, Parentesco parentesco, Funcionario funcionario) {
+	public Dependente(String nome, LocalDate nascimento, String cpf, Parentesco parentesco, Funcionario funcionario)
+	throws CPFInvalido {
 		super(nome, nascimento, cpf);
 		this.parentesco = parentesco;
 		this.funcionario = funcionario;
