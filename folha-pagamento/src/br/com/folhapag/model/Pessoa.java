@@ -3,16 +3,21 @@ package br.com.folhapag.model;
 import java.time.LocalDate;
 
 import br.com.folhapag.exception.CPFInvalido;
+import br.com.folhapag.exception.DataInvalida;
+import br.com.folhapag.exception.NomeInvalido;
+import br.com.folhapag.utils.ValidarCPF;
+import br.com.folhapag.utils.ValidarData;
+import br.com.folhapag.utils.ValidarNome;
 
 public abstract class Pessoa {
     private String nome;
     private LocalDate nascimento;
     private String cpf;
     
-    public Pessoa(String nome, LocalDate nascimento, String cpf) throws CPFInvalido {
+    public Pessoa(String nome, LocalDate nascimento, String cpf) throws CPFInvalido, DataInvalida, NomeInvalido {
         super();
-        this.nome = nome;
-        this.nascimento = nascimento;
+        setNome(nome);
+        setNascimento(nascimento);
         setCpf(cpf);
     }
 
@@ -20,16 +25,16 @@ public abstract class Pessoa {
         return nome;
     }
 
-    public void setNome(String nome) {
-        this.nome = nome;
+    public void setNome(String nome) throws NomeInvalido {
+        this.nome = ValidarNome.validar(nome);
     }
 
     public LocalDate getNascimento() {
         return nascimento;
     }
 
-    public void setNascimento(LocalDate nascimento) {
-        this.nascimento = nascimento;
+    public void setNascimento(LocalDate nascimento) throws DataInvalida {
+        this.nascimento = ValidarData.validar(nascimento);
     }
 
     public String getCpf() {
@@ -37,11 +42,6 @@ public abstract class Pessoa {
     }
 
     public void setCpf(String cpf) throws CPFInvalido {
-        String cpfLimpo = (cpf != null) ? cpf.replaceAll("\\D", "") : ""; 
-
-        if (cpfLimpo.length() != 11) {
-            throw new CPFInvalido("O CPF " + cpf + " é inválido! Deve conter 11 dígitos.");
-        }
-        this.cpf = cpfLimpo;
+        this.cpf = ValidarCPF.validar(cpf);
     }
 }
