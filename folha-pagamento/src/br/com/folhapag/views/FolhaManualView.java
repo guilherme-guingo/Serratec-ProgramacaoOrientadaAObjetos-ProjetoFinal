@@ -24,7 +24,7 @@ public class FolhaManualView {
 		double salario = lerSalario();
 		Departamento departamento = lerDepartamento();
 
-		Funcionario funcionario = new Funcionario(nome, data, cpf, salario, departamento);
+		Funcionario funcionario = new Funcionario(nome, cpf, data, salario, departamento);
 		List<Dependente> dependentes = lerDependentes(funcionario);
 		funcionario.setDependentes(dependentes);
 		
@@ -117,13 +117,12 @@ public class FolhaManualView {
 					String cpf = lerCPF();
 					Parentesco p = lerParentesco();
 					
-					dependentes.add(new Dependente(nome, data, cpf, p, funcionario));
+					dependentes.add(new Dependente(nome, cpf, data, p, funcionario));
 					System.out.println("Deseja adicionar mais um dependente? [S/N]");
 					resp = sc.nextLine();
-					
-					if(resp.equalsIgnoreCase("N")) {
-						return dependentes;
-					}
+				}
+				if(resp.equalsIgnoreCase("N")) {
+					return dependentes;
 				}
 			} catch (Exception e) {
 				System.err.println("Erro");
@@ -151,4 +150,5 @@ public class FolhaManualView {
 		return p;
 	}
 }
+	
 }

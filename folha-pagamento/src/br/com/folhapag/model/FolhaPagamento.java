@@ -9,6 +9,10 @@ public class FolhaPagamento {
 	private double IRRF;
 	private double salarioLiquido;
 	
+	public FolhaPagamento() {
+		this.data = LocalDate.now();
+	}
+	
 	public FolhaPagamento(Funcionario funcionario, double INSS, double IRRF, double salarioLiquido) {
 		this.funcionario = funcionario;
 		this.data = LocalDate.now();
@@ -39,7 +43,7 @@ public class FolhaPagamento {
 		return IRRF;
 	}
 	public void setIR(double IRRF) {
-		IRRF = IRRF;
+		this.IRRF = IRRF;
 	}
 	public double getSalarioLiquido() {
 		return salarioLiquido;

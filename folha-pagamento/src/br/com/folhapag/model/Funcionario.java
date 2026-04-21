@@ -9,7 +9,7 @@ public class Funcionario extends Pessoa{
 	private Departamento departamento;
 	private List<Dependente> dependentes;
 	
-	public Funcionario(String nome, LocalDate nascimento, String cpf, double salarioBruto, Departamento departamento) {
+	public Funcionario(String nome, String cpf, LocalDate nascimento, double salarioBruto, Departamento departamento) {
 		super(nome, nascimento, cpf);
 		this.salarioBruto = salarioBruto;
 		this.departamento = departamento;

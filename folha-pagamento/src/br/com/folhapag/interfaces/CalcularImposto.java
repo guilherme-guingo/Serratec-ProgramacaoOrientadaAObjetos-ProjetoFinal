@@ -1,7 +1,7 @@
 package br.com.folhapag.interfaces;
 
-import br.com.folhapag.model.Funcionario;
+import br.com.folhapag.contexts.FolhaContexto;
 
 public interface CalcularImposto {
-	public double calcularImposto();
+	public void calcularImposto(FolhaContexto contexto);
 }

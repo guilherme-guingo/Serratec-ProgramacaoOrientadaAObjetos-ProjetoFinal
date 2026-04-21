@@ -7,7 +7,7 @@ import br.com.folhapag.enums.Parentesco;
 public class Dependente extends Pessoa {
 	private Parentesco parentesco;
 	private Funcionario funcionario;
-	public Dependente(String nome, LocalDate nascimento, String cpf, Parentesco parentesco, Funcionario funcionario) {
+	public Dependente(String nome, String cpf, LocalDate nascimento, Parentesco parentesco, Funcionario funcionario) {
 		super(nome, nascimento, cpf);
 		this.parentesco = parentesco;
 		this.funcionario = funcionario;
