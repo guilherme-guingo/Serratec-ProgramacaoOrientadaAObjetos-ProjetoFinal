@@ -16,6 +16,6 @@ public class FolhaLoteView {
 		System.out.println("Escreva o local de saída: ");
 		String saida = sc.nextLine();
 		
-		folhaLoteService.lerLote(entrada, saida);
+		folhaLoteService.processarLote(entrada, saida);
 	}
 }

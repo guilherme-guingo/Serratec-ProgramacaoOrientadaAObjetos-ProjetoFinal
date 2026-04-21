@@ -4,24 +4,31 @@ import java.time.LocalDate;
 import java.util.ArrayList;
 import java.util.List;
 
-public class Funcionario extends Pessoa{
+import br.com.folhapag.exception.CPFInvalido;
+import br.com.folhapag.exception.DataInvalida;
+import br.com.folhapag.exception.NomeInvalido;
+import br.com.folhapag.exception.SalarioInvalido;
+import br.com.folhapag.utils.ValidarSalario;
+
+public class Funcionario extends Pessoa {
 	private double salarioBruto;
 	private Departamento departamento;
 	private List<Dependente> dependentes;
-	
-	public Funcionario(String nome, String cpf, LocalDate nascimento, double salarioBruto, Departamento departamento) {
+
+	public Funcionario(String nome, String cpf, LocalDate nascimento, double salarioBruto, Departamento departamento)
+			throws CPFInvalido, DataInvalida, NomeInvalido, SalarioInvalido {
 		super(nome, nascimento, cpf);
-		this.salarioBruto = salarioBruto;
 		this.departamento = departamento;
-		this.dependentes = new ArrayList();
+		this.dependentes = new ArrayList<>();
+		setSalarioBruto(salarioBruto);
 	}
 
 	public double getSalarioBruto() {
 		return salarioBruto;
 	}
 
-	public void setSalarioBruto(double salarioBruto) {
-		this.salarioBruto = salarioBruto;
+	public void setSalarioBruto(double salarioBruto) throws SalarioInvalido {
+		this.salarioBruto = ValidarSalario.validar(salarioBruto);
 	}
 
 	public Departamento getDepartamento() {
@@ -39,5 +46,4 @@ public class Funcionario extends Pessoa{
 	public void setDependentes(List<Dependente> dependentes) {
 		this.dependentes = dependentes;
 	}
-	
 }

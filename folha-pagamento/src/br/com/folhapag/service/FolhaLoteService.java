@@ -4,13 +4,17 @@ import java.io.BufferedReader;
 import java.io.BufferedWriter;
 import java.io.FileReader;
 import java.io.FileWriter;
+import java.sql.Connection;
+import java.sql.SQLException;
 import java.time.LocalDate;
 import java.util.ArrayList;
 import java.util.List;
 
-import javax.swing.JOptionPane;
-
+import br.com.folhapag.config.Conexao;
 import br.com.folhapag.contexts.FolhaContexto;
+import br.com.folhapag.dao.DepartamentoDao;
+import br.com.folhapag.dao.FolhaPagamentoDao;
+import br.com.folhapag.dao.FuncionarioDao;
 import br.com.folhapag.enums.Parentesco;
 import br.com.folhapag.model.Departamento;
 import br.com.folhapag.model.Dependente;
@@ -19,16 +23,18 @@ import br.com.folhapag.model.Funcionario;
 
 public class FolhaLoteService {
 
-	public void lerLote(String entrada, String saida) {
-		try {
-			BufferedReader leitor = new BufferedReader(new FileReader(entrada));
-			BufferedWriter escritor = new BufferedWriter(new FileWriter(saida));
+	public void processarLote(String entrada, String saida) {
+		try(BufferedReader leitor = new BufferedReader(new FileReader(entrada));
+			BufferedWriter escritor = new BufferedWriter(new FileWriter(saida));Connection connection = Conexao.getConexaoDB();) {
+			
+			DepartamentoDao depDao = new DepartamentoDao(connection);
+			FuncionarioDao funcDao = new FuncionarioDao(connection);
+			
 			String linha;
 			Funcionario funcionario = null;
 			List<Dependente> dependentes = new ArrayList();
-
-			Departamento dep = new Departamento("abc"); // apenas para teste
-
+			Departamento dep = null;
+			
 			FolhaPagamento folha = new FolhaPagamento();
 			FolhaPagamentoService folhaService = new FolhaPagamentoService();
 			FolhaContexto contexto = new FolhaContexto();
@@ -38,14 +44,15 @@ public class FolhaLoteService {
 
 				if (dados.length == 5) {
 					if (funcionario != null) {
-						processarEscrever(folha, folhaService, funcionario, contexto, escritor);
+						processarEscrever(folha, folhaService, funcionario, contexto, escritor, connection);
 					}
 					
 					dependentes = new ArrayList<>();
 					funcionario = new Funcionario(dados[0], dados[1], LocalDate.parse(dados[2]),
-							Double.parseDouble(dados[3]), dep); // query com dao para departamento, por enquanto essa é
-																// apenas teste
+							Double.parseDouble(dados[3]), dep = depDao.buscarDepPorId(Integer.parseInt(dados[4]))); // query com dao para departamento, por enquanto essa é
+					System.out.println(funcionario.getDepartamento());											
 					funcionario.setDependentes(dependentes);
+					funcDao.salvar(funcionario);
 
 				} else if (dados.length == 4) {
 					Dependente dependente = new Dependente(dados[0], dados[1], LocalDate.parse(dados[2]),
@@ -55,22 +62,28 @@ public class FolhaLoteService {
 			}
 
 			if (funcionario != null) {
-				processarEscrever(folha, folhaService, funcionario, contexto, escritor);
+				processarEscrever(folha, folhaService, funcionario, contexto, escritor, connection);
 			}
 			
-			JOptionPane.showMessageDialog(null, "Arquivo enviado com sucesso!");
-			escritor.close();
-			leitor.close();
+			System.out.println("Arquivo enviado com sucesso!");
 
 		} catch (Exception e) {
 			System.out.println("Erro");
+			e.printStackTrace();
 		}
 	}
 
 	private void processarEscrever(FolhaPagamento folha, FolhaPagamentoService folhaService, Funcionario funcionario,
-			FolhaContexto contexto, BufferedWriter escritor) {
-		
+			FolhaContexto contexto, BufferedWriter escritor, Connection conn) {
+		FolhaPagamentoDao folhaDao = new FolhaPagamentoDao(conn);
 		folha = folhaService.folhaCalculo(funcionario, contexto);
+		try {
+			folhaDao.salvar(folha);
+		}catch(SQLException e) {
+			System.out.println("Erro ao salvar folha no banco de dados");
+		}
+		
+		
 		String escrita = escreverCSV(folha);
  
 		try {

@@ -3,11 +3,18 @@ package br.com.folhapag.model;
 import java.time.LocalDate;
 
 import br.com.folhapag.enums.Parentesco;
+import br.com.folhapag.exception.CPFInvalido;
+import br.com.folhapag.exception.DataInvalida;
+import br.com.folhapag.exception.DependenteSemTitular;
+import br.com.folhapag.exception.NomeInvalido;
+import br.com.folhapag.utils.ValidarDependente;
+
 
 public class Dependente extends Pessoa {
+
 	private Parentesco parentesco;
 	private Funcionario funcionario;
-	public Dependente(String nome, String cpf, LocalDate nascimento, Parentesco parentesco, Funcionario funcionario) {
+	public Dependente(String nome, String cpf, LocalDate nascimento, Parentesco parentesco, Funcionario funcionario) throws CPFInvalido, DataInvalida, NomeInvalido {
 		super(nome, nascimento, cpf);
 		this.parentesco = parentesco;
 		this.funcionario = funcionario;
@@ -21,8 +28,10 @@ public class Dependente extends Pessoa {
 	public Funcionario getFuncionario() {
 		return funcionario;
 	}
-	public void setFuncionario(Funcionario funcionario) {
-		this.funcionario = funcionario;
-	}
-	
+	public void setFuncionario(Funcionario funcionario) throws DependenteSemTitular {
+        this.funcionario = ValidarDependente.validarTitular(funcionario);
+    }
 }
+
+
+
