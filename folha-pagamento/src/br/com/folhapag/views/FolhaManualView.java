@@ -9,6 +9,7 @@ import java.util.Scanner;
 
 import br.com.folhapag.enums.Parentesco;
 import br.com.folhapag.exception.CPFInvalido;
+import br.com.folhapag.exception.DataInvalida;
 import br.com.folhapag.exception.DependenteSemTitular;
 import br.com.folhapag.exception.NomeInvalido;
 import br.com.folhapag.exception.SalarioInvalido;
@@ -16,23 +17,26 @@ import br.com.folhapag.model.Departamento;
 import br.com.folhapag.model.Dependente;
 import br.com.folhapag.model.FolhaPagamento;
 import br.com.folhapag.model.Funcionario;
+import br.com.folhapag.utils.ValidarCPF;
+import br.com.folhapag.utils.ValidarData;
+import br.com.folhapag.utils.ValidarDependente;
 
 public class FolhaManualView {
 	Scanner sc = new Scanner(System.in);
 
 	public Funcionario entradaDadosManual() {
-
+		try {
 		String nome = lerNome();
 		LocalDate data = lerData();
 		String cpf = lerCPF();
 		double salario = lerSalario();
 		Departamento departamento = lerDepartamento();
-		try {
+			
 			Funcionario funcionario = new Funcionario(nome, data, cpf, salario, departamento);
 			List<Dependente> dependentes = lerDependentes(funcionario);
 			funcionario.setDependentes(dependentes);
 			return funcionario;
-		} catch (CPFInvalido | SalarioInvalido e) {
+		} catch (CPFInvalido | DataInvalida | NomeInvalido | SalarioInvalido  e) {
 			System.err.println("Erro inesperado: " + e.getMessage());
 			return null;
 		}
@@ -66,12 +70,16 @@ public class FolhaManualView {
 	private LocalDate lerData() {
 		while (true) {
 			try {
-				System.out.println("Informe a data de nascimento: (ano-mes-dia)");
-				String data = sc.nextLine();
-				LocalDate dataFinal = LocalDate.parse(data);
-				return dataFinal;
-			} catch (DateTimeParseException e) {
-				System.err.println("Formato da data inválido!");
+		          System.out.print("Informe a data (AAAA-MM-DD): ");
+		          LocalDate data = LocalDate.parse(sc.nextLine());
+		          
+		          ValidarData.validar(data);
+		          
+		           return data;
+		        } catch (DateTimeParseException e) {
+		            System.err.println("Formato inválido.\n Use AAAA-MM-DD.");
+		        } catch (DataInvalida e) {
+		            System.err.println(e.getMessage());
 			}
 		}
 	}
@@ -81,9 +89,7 @@ public class FolhaManualView {
 			try {
 				System.out.println("Informe o CPF: ");
 				String cpf = sc.nextLine();
-				if (cpf == null || cpf.length() != 11) {
-					throw new CPFInvalido("O CPF deve conter exatamente 11 dígitos.");
-				}
+				ValidarCPF.validar(cpf);
 				return cpf;
 			} catch (CPFInvalido e) { 
 				System.err.println(e.getMessage());
@@ -118,45 +124,46 @@ public class FolhaManualView {
 				Departamento departamento = new Departamento(nomeDepartamento);
 				return departamento;
 			} catch (Exception e) {
-				System.err.println("Erro");
+				System.err.println("Erro"); 
 			}
 		}
 	}
-
+	
+	
 	public List<Dependente> lerDependentes(Funcionario funcionario) {
-		List<Dependente> dependentes = new ArrayList();
-		while (true) {
-			try {
-				
-				if (funcionario == null) {
-					throw new DependenteSemTitular("Não é possível cadastrar dependentes, pois o funcionário titular não foi encontrado.");
-				}
-				System.out.println("O funcionário possui dependentes? [S/N]");
-				String resp = sc.nextLine();
-				while (resp.equalsIgnoreCase("S")) {
-					
-					String nome = lerNome();
-					LocalDate data = lerData();
-					String cpf = lerCPF();
-					Parentesco p = lerParentesco();
-					
-					dependentes.add(new Dependente(nome, data, cpf, p, funcionario));
-					System.out.println("Deseja adicionar mais um dependente? [S/N]");
-					resp = sc.nextLine();
-					
-					if(resp.equalsIgnoreCase("N")) {
-						return dependentes;
-					}
-				}
-			} catch (DependenteSemTitular e) {
-				System.err.println(e.getMessage());
-			}
-			catch (Exception e) {
-				System.err.println("Erro");
-				sc.nextLine();
-			}
-		}
+	    List<Dependente> dependentes = new ArrayList<>(); 
+	    
+	    try {
+	        ValidarDependente.validarTitular(funcionario);
+	        
+	        System.out.println("O funcionário possui dependentes? [S/N]");
+	        String resp = sc.nextLine();
+
+	        while (resp.equalsIgnoreCase("S")) {
+	            try {
+	                
+	                String nome = lerNome();
+	                LocalDate data = lerData();
+	                String cpf = lerCPF();
+	                Parentesco p = lerParentesco();
+	                
+	                dependentes.add(new Dependente(nome, data, cpf, p, funcionario));
+	              
+	                System.out.println("Deseja adicionar mais um? [S/N]");
+	                resp = sc.nextLine();
+
+	            } catch (CPFInvalido | DataInvalida | NomeInvalido e) {
+	                System.err.println("Erro no cadastro: " + e.getMessage());
+	            }
+	        }
+	    } catch (DependenteSemTitular e) {
+	        System.err.println(e.getMessage());
+	    }
+
+	    return dependentes; 
 	}
+	
+
 	
 	private Parentesco lerParentesco() {
 		while(true) {

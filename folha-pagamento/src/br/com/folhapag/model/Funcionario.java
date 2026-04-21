@@ -5,7 +5,10 @@ import java.util.ArrayList;
 import java.util.List;
 
 import br.com.folhapag.exception.CPFInvalido;
+import br.com.folhapag.exception.DataInvalida;
+import br.com.folhapag.exception.NomeInvalido;
 import br.com.folhapag.exception.SalarioInvalido;
+import br.com.folhapag.utils.ValidarSalario;
 
 public class Funcionario extends Pessoa {
     private double salarioBruto;
@@ -13,7 +16,7 @@ public class Funcionario extends Pessoa {
     private List<Dependente> dependentes;
     
     public Funcionario(String nome, LocalDate nascimento, String cpf, double salarioBruto, Departamento departamento) 
-            throws CPFInvalido, SalarioInvalido {
+            throws CPFInvalido, DataInvalida, NomeInvalido, SalarioInvalido {
         
         super(nome, nascimento, cpf); 
         this.departamento = departamento;
@@ -27,10 +30,7 @@ public class Funcionario extends Pessoa {
     }
 
     public void setSalarioBruto(double salarioBruto) throws SalarioInvalido {
-        if (salarioBruto < 1412.00) {
-            throw new SalarioInvalido("Salário inválido. Mínimo é R$ 1.412,00.");
-        }
-        this.salarioBruto = salarioBruto;
+        this.salarioBruto = ValidarSalario.validar(salarioBruto);
     }
 
     public Departamento getDepartamento() {
@@ -45,7 +45,7 @@ public class Funcionario extends Pessoa {
         return dependentes;
     }
 
-    public void setDependentes(List<Dependente> dependentes) {
+    public void setDependentes(List<Dependente> dependentes)  {
         this.dependentes = dependentes;
     }
 }
