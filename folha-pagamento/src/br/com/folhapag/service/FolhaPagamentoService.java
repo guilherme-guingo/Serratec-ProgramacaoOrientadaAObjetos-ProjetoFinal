@@ -1,6 +1,10 @@
 package br.com.folhapag.service;
 
 import br.com.folhapag.contexts.FolhaContexto;
+import java.sql.Connection;
+import java.sql.SQLException;
+import java.util.List;
+import br.com.folhapag.dao.FolhaPagamentoDao;
 import br.com.folhapag.model.FolhaPagamento;
 import br.com.folhapag.model.Funcionario;
 

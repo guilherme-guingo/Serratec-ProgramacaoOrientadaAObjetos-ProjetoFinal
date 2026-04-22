@@ -49,7 +49,7 @@ public class FolhaLoteService {
 					
 					dependentes = new ArrayList<>();
 					funcionario = new Funcionario(dados[0], dados[1], LocalDate.parse(dados[2]),
-							Double.parseDouble(dados[3]), dep = depDao.buscarDepPorId(Integer.parseInt(dados[4]))); // query com dao para departamento, por enquanto essa é
+							Double.parseDouble(dados[3]), dep = depDao.buscarPorId(Integer.parseInt(dados[4]))); // query com dao para departamento, por enquanto essa é
 					System.out.println(funcionario.getDepartamento());											
 					funcionario.setDependentes(dependentes);
 					funcDao.salvar(funcionario);

@@ -17,7 +17,7 @@ public class DepartamentoDao {
         this.conn = conn;
     }
 
-    // Método para a pesquisa de todos os departamentos
+    // 1. Busca TODOS (Usado para relatórios e menus)
     public List<Departamento> listarTodos() throws SQLException {
         List<Departamento> departamentos = new ArrayList<>();
         String sql = "SELECT id, nome FROM departamento ORDER BY nome";
@@ -26,6 +26,8 @@ public class DepartamentoDao {
              ResultSet rs = ps.executeQuery()) {
             
             while (rs.next()) {
+                // Usando o construtor que aceita ID e Nome se você tiver, 
+                // ou mantendo seu padrão setNome
                 Departamento d = new Departamento(rs.getInt("id"));
                 d.setNome(rs.getString("nome"));
                 departamentos.add(d);
@@ -33,47 +35,44 @@ public class DepartamentoDao {
         }
         return departamentos;
     }
-    	/*
-         * Busca o ID pelo nome (usado na importação do CSV).
-         * Retorna -1 se não encontrar.
-         */
-        public int buscarIdPorNome(String nome) {
-            String sql = "SELECT id FROM departamento WHERE UPPER(nome) = UPPER(?)";
-            
-            try (Connection conn = Conexao.getConexaoDB();
-                 PreparedStatement stmt = conn.prepareStatement(sql)) {
-                
-                stmt.setString(1, nome.trim());
-                
-                try (ResultSet rs = stmt.executeQuery()) {
-                    if (rs.next()) {
-                        return rs.getInt("id");
-                    }
-                }
-            } catch (SQLException e) {
-                System.err.println("Erro ao buscar ID do departamento: " + e.getMessage());
-            }
-            return -1;
-        }
+
+    
+    // 2. Busca por NOME (Essencial para Importação de CSV)
+    public int buscarIdPorNome(String nome) {
+        String sql = "SELECT id FROM departamento WHERE UPPER(nome) = UPPER(?)";
         
-        public Departamento buscarDepPorId(int id) {
-            String sql = "SELECT nome FROM departamento WHERE id = ?";
+        try (PreparedStatement stmt = this.conn.prepareStatement(sql)) {
+            stmt.setString(1, nome.trim());
             
-            try (Connection conn = Conexao.getConexaoDB();
-                 PreparedStatement stmt = conn.prepareStatement(sql)) {
-                
-                stmt.setInt(1, id);
-                
-                try (ResultSet rs = stmt.executeQuery()) {
-                    if (rs.next()) {
-                        return new Departamento(id, rs.getString("nome"));
-                    }
+            try (ResultSet rs = stmt.executeQuery()) {
+                if (rs.next()) {
+                    return rs.getInt("id");
                 }
-            } catch (SQLException e) {
-                System.err.println("Erro ao buscar ID do departamento: " + e.getMessage());
-                
             }
-            return null;
-            
+        } catch (SQLException e) {
+            System.err.println("Erro ao buscar ID do departamento [" + nome + "]: " + e.getMessage());
         }
+        return -1;
+    }
+
+    // 3. NOVO: Busca OBJETO por ID (Usado para preencher dados do Funcionário)
+    public Departamento buscarPorId(int id) {
+        String sql = "SELECT id, nome FROM departamento WHERE id = ?";
+        
+        try (PreparedStatement stmt = this.conn.prepareStatement(sql)) {
+            stmt.setInt(1, id);
+            
+            try (ResultSet rs = stmt.executeQuery()) {
+                if (rs.next()) {
+                    Departamento d = new Departamento(rs.getInt("id"));
+                    d.setNome(rs.getString("nome"));
+                    return d;
+                }
+            }
+        } catch (SQLException e) {
+            System.err.println("Erro ao buscar departamento [ID: " + id + "]: " + e.getMessage());
+        }
+        return null;
+    }
+
 }

@@ -42,11 +42,16 @@ public class FuncionarioDao {
         try (PreparedStatement ps = conn.prepareStatement(sql)) {
             ps.setInt(1, idDepto);
             try (ResultSet rs = ps.executeQuery()) {
-                while (rs.next()) {
-                    try {
-                        // Convertendo a data com segurança
-                        Date dataSql = rs.getDate("nascimento");
-                        LocalDate dataLocal = (dataSql != null) ? dataSql.toLocalDate() : null;
+            	while (rs.next()) {
+            	    try {
+            	        // 1. Extração Individual (Aqui isolamos erros de nomes de colunas)
+            	        String nomeBD = rs.getString("nome");
+            	        String cpfBD = rs.getString("cpf");
+            	        double salarioBD = rs.getDouble("salario_bruto");
+            	        
+            	        // 2. Conversão de Data (Essencial para o construtor)
+            	        Date dataSql = rs.getDate("nascimento");
+            	        LocalDate dataLocal = (dataSql != null) ? dataSql.toLocalDate() : null;
 
                         // Criando o objeto - Aqui ele pode lançar SalarioInvalido ou CPFInvalido
                         Funcionario f = new Funcionario(
