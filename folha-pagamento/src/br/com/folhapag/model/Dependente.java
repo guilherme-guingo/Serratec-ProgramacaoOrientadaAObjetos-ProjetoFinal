@@ -11,29 +11,27 @@ import br.com.folhapag.utils.ValidarDependente;
 
 
 public class Dependente extends Pessoa {
-    private Parentesco parentesco;
-    private Funcionario funcionario; 
 
-    public Dependente(String nome, LocalDate nascimento, String cpf, Parentesco parentesco, Funcionario funcionario)
-            throws CPFInvalido, DataInvalida, NomeInvalido, DependenteSemTitular { 
-        super(nome, nascimento, cpf); 
-        this.parentesco = parentesco;
-        setFuncionario(funcionario);
-    }
-
-    public Parentesco getParentesco() {
-        return parentesco;
-    }
-
-    public void setParentesco(Parentesco parentesco) {
-        this.parentesco = parentesco;
-    }
-
-    public Funcionario getFuncionario() {
-        return funcionario;
-    }
-
-    public void setFuncionario(Funcionario funcionario) throws DependenteSemTitular {
+	private Parentesco parentesco;
+	private Funcionario funcionario;
+	public Dependente(String nome, String cpf, LocalDate nascimento, Parentesco parentesco, Funcionario funcionario) throws CPFInvalido, DataInvalida, NomeInvalido {
+		super(nome, nascimento, cpf);
+		this.parentesco = parentesco;
+		this.funcionario = funcionario;
+	}
+	public Parentesco getParentesco() {
+		return parentesco;
+	}
+	public void setParentesco(Parentesco parentesco) {
+		this.parentesco = parentesco;
+	}
+	public Funcionario getFuncionario() {
+		return funcionario;
+	}
+	public void setFuncionario(Funcionario funcionario) throws DependenteSemTitular {
         this.funcionario = ValidarDependente.validarTitular(funcionario);
     }
 }
+
+
+

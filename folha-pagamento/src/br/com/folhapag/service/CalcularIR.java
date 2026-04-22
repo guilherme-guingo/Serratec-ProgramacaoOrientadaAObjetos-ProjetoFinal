@@ -2,63 +2,57 @@ package br.com.folhapag.service;
 
 import java.util.List;
 
+import br.com.folhapag.contexts.FolhaContexto;
 import br.com.folhapag.interfaces.CalcularImposto;
 import br.com.folhapag.model.Dependente;
 
 public class CalcularIR implements CalcularImposto{
-	private double salario;
-	private double INSS;
-	private int dependentes;
 	private final double DEDUCAO_DEPENDENTE = 189.59;
 	
 	public CalcularIR() {}
 	
-	public CalcularIR(double salario, double INSS, List<Dependente> dependentes) {
-		this.salario = salario;
-		this.INSS = INSS;
-		this.dependentes = dependentes.size();
-	}
 	
 	@Override
-	public double calcularImposto() {
-		double base = salario - INSS -(dependentes * DEDUCAO_DEPENDENTE);
+	public void calcularImposto(FolhaContexto contexto) {
+		double base = contexto.getFuncionario().getSalarioBruto() - contexto.getValorINSS() - (contexto.getFuncionario().getDependentes().size() * DEDUCAO_DEPENDENTE);
 		
-		double aliquota = calcAliquota();
-		double parcela = calcParcela();
+		double aliquota = calcAliquota(base);
+		double parcela = calcParcela(base);
 		
-		return (base * aliquota) - parcela ;
+		double resultado = (base * aliquota) - parcela ;
+		contexto.setValorIRRF(Math.max(0, resultado));
 	}
 	
-	private double calcAliquota() {
-		if(salario <= 2259.20) {
+	private double calcAliquota(double base) {
+		if(base <= 2259.20) {
 			return 0;
 			
-		}else if(salario <= 2826.65) {
-			return 7.5/100;
+		}else if(base <= 2826.65) {
+			return 7.5/100.0;
 			
-		}else if(salario <= 3751.05) {
-			return 15/100;
+		}else if(base <= 3751.05) {
+			return 15.0/100.0;
 			
-		}else if(salario <= 4664.68) {
-			return 22.5/100;
+		}else if(base <= 4664.68) {
+			return 22.5/100.0;
 			
 		}else {
-			return 27.5/100;
+			return 27.5/100.0;
 		}
 		
 	}
 	
-	private double calcParcela() {
-		if(salario <= 2259.20) {
+	private double calcParcela(double base) {
+		if(base <= 2259.20) {
 			return 0;
 			
-		}else if(salario <= 2826.65) {
+		}else if(base <= 2826.65) {
 			return 169.44;
 			
-		}else if(salario <= 3751.05) {
+		}else if(base <= 3751.05) {
 			return 381.44;
 			
-		}else if(salario <= 4664.68) {
+		}else if(base <= 4664.68) {
 			return 662.77;
 			
 		}else {

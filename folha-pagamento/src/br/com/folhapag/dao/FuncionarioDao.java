@@ -1,13 +1,20 @@
 package br.com.folhapag.dao;
 
-import br.com.folhapag.exception.CPFInvalido;
-import br.com.folhapag.exception.SalarioInvalido;
-import br.com.folhapag.model.Departamento;
-import br.com.folhapag.model.Funcionario;
-import java.sql.*;
+import java.sql.Connection;
+import java.sql.Date;
+import java.sql.PreparedStatement;
+import java.sql.ResultSet;
+import java.sql.SQLException;
 import java.time.LocalDate;
 import java.util.ArrayList;
 import java.util.List;
+
+import br.com.folhapag.exception.CPFInvalido;
+import br.com.folhapag.exception.DataInvalida;
+import br.com.folhapag.exception.NomeInvalido;
+import br.com.folhapag.exception.SalarioInvalido;
+import br.com.folhapag.model.Departamento;
+import br.com.folhapag.model.Funcionario;
 
 public class FuncionarioDao {
     private Connection conn;
@@ -44,14 +51,14 @@ public class FuncionarioDao {
                         // Criando o objeto - Aqui ele pode lançar SalarioInvalido ou CPFInvalido
                         Funcionario f = new Funcionario(
                             rs.getString("nome"),
-                            dataLocal,
                             rs.getString("cpf"),
+                            dataLocal,
                             rs.getDouble("salario_bruto"),
                             new Departamento(idDepto)
                         );
                         
                         lista.add(f);
-                    } catch (SalarioInvalido | CPFInvalido e) {
+                    } catch (SalarioInvalido | CPFInvalido | NomeInvalido | DataInvalida e) {
                         // Se um funcionário no banco estiver com dados inválidos, 
                         // logamos o erro e pulamos para o próximo
                         System.err.println("Pulo de registro: " + e.getMessage());

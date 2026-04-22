@@ -12,6 +12,11 @@ public class Departamento {
     public Departamento(int id) {
         this.id = id;
     }
+    
+    public Departamento(int id, String nome) {
+    	this.id = id;
+    	this.nome = nome;
+    }
 
     // O DAO precisa deste método para o ps.setInt(5, ...)
     public int getId() {
@@ -29,4 +34,9 @@ public class Departamento {
     public void setNome(String nome) {
         this.nome = nome;
     }
+
+	@Override
+	public String toString() {
+		return "Departamento [id=" + id + ", nome=" + nome + "]";
+	}
 }
