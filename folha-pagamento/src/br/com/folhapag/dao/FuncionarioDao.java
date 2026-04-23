@@ -14,6 +14,7 @@ import br.com.folhapag.exception.DataInvalida;
 import br.com.folhapag.exception.NomeInvalido;
 import br.com.folhapag.exception.SalarioInvalido;
 import br.com.folhapag.model.Departamento;
+import br.com.folhapag.model.Dependente;
 import br.com.folhapag.model.Funcionario;
 
 public class FuncionarioDao {
@@ -33,39 +34,118 @@ public class FuncionarioDao {
             ps.setInt(5, f.getDepartamento().getId()); // ID vindo do campo 5 do CSV
             ps.executeUpdate();
         }
-    }  
+    }
+    
+    //Verifica se um CPF já existe no banco.
+    public boolean existeCpf(String cpf) throws SQLException {
+        String sql = "SELECT COUNT(*) FROM funcionario WHERE cpf = ?";
+        try (PreparedStatement ps = conn.prepareStatement(sql)) {
+            ps.setString(1, cpf);
+            try (ResultSet rs = ps.executeQuery()) {
+                if (rs.next()) {
+                    return rs.getInt(1) > 0;
+                }
+            }
+        }
+        return false;
+    }
+    
+    //Busca um funcionário completo pelo CPF
+    public Funcionario buscarPorCpf(String cpf) throws SQLException {
+        String sql = "SELECT * FROM funcionario WHERE cpf = ?";
+        
+        DepartamentoDao deptoDao = new DepartamentoDao(this.conn);
+
+        try (PreparedStatement ps = conn.prepareStatement(sql)) {
+            ps.setString(1, cpf);
+            try (ResultSet rs = ps.executeQuery()) {
+                if (rs.next()) {
+                    int idDepto = rs.getInt("id_departamento");
+                    Departamento depto = deptoDao.buscarPorId(idDepto);
+
+                    Date dataSql = rs.getDate("nascimento");
+                    LocalDate dataLocal = (dataSql != null) ? dataSql.toLocalDate() : null;
+
+                    return new Funcionario(
+                        rs.getString("nome"),
+                        rs.getString("cpf"),
+                        dataLocal,
+                        rs.getDouble("salario_bruto"),
+                        depto
+                    );
+                }
+            }
+        } catch (Exception e) {
+            System.err.println("Erro ao buscar funcionário por CPF: " + e.getMessage());
+        }
+        return null;
+    }
     
     public List<Funcionario> listarPorDepartamento(int idDepto) throws SQLException {
         List<Funcionario> lista = new ArrayList<>();
         String sql = "SELECT * FROM funcionario WHERE id_departamento = ? ORDER BY nome";
+
+        DepartamentoDao deptoDao = new DepartamentoDao(this.conn);
+        DependenteDao depDao = new DependenteDao(this.conn);
+
+        Departamento deptoCompleto = deptoDao.buscarPorId(idDepto);
 
         try (PreparedStatement ps = conn.prepareStatement(sql)) {
             ps.setInt(1, idDepto);
             try (ResultSet rs = ps.executeQuery()) {
                 while (rs.next()) {
                     try {
-                        // Convertendo a data com segurança
                         Date dataSql = rs.getDate("nascimento");
                         LocalDate dataLocal = (dataSql != null) ? dataSql.toLocalDate() : null;
 
-                        // Criando o objeto - Aqui ele pode lançar SalarioInvalido ou CPFInvalido
+                        // 1. Criamos o objeto Funcionário com o departamento
                         Funcionario f = new Funcionario(
                             rs.getString("nome"),
                             rs.getString("cpf"),
                             dataLocal,
                             rs.getDouble("salario_bruto"),
-                            new Departamento(idDepto)
+                            deptoCompleto
                         );
                         
+                        // 2. Buscamos os dependentes
+                        List<Dependente> dependentes = depDao.buscarPorFuncionario(f);
+                        
+                        f.setDependentes(dependentes); 
+                        
                         lista.add(f);
+
                     } catch (SalarioInvalido | CPFInvalido | NomeInvalido | DataInvalida e) {
-                        // Se um funcionário no banco estiver com dados inválidos, 
-                        // logamos o erro e pulamos para o próximo
                         System.err.println("Pulo de registro: " + e.getMessage());
                     }
                 }
             }
         }
         return lista;
+    }
+    
+    public void listarResumoFuncionarios() throws SQLException {
+        String sql = "SELECT f.nome AS funcionario, f.cpf, f.salario_bruto, d.nome AS departamento " +
+                     "FROM funcionario f " +
+                     "JOIN departamento d ON f.id_departamento = d.id " +
+                     "ORDER BY f.nome";
+
+        try (PreparedStatement ps = conn.prepareStatement(sql);
+             ResultSet rs = ps.executeQuery()) {
+
+            System.out.println("\n========== RESUMO DE FUNCIONÁRIOS POR SETOR ==========");
+            System.out.printf("%-20s | %-15s | %-12s | %-15s%n", 
+                              "NOME", "CPF", "SALÁRIO", "DEPARTAMENTO");
+            System.out.println("----------------------------------------------------------------------");
+
+            while (rs.next()) {
+                System.out.printf("%-20s | %-15s | R$ %-10.2f | %-15s%n",
+                    rs.getString("funcionario"),
+                    rs.getString("cpf"),
+                    rs.getDouble("salario_bruto"),
+                    rs.getString("departamento")
+                );
+            }
+            System.out.println("======================================================================\n");
+        }
     }
 }
