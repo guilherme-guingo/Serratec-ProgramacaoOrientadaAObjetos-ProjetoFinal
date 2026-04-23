@@ -43,7 +43,32 @@ public class SetupBanco {
             (4, 'Marketing'), (5, 'Logística'), (6, 'Vendas'),
             (7, 'Diretoria'), (8, 'Operações')
             ON CONFLICT (id) DO NOTHING;
+            
+            --Inserção dos membros do grupo para testes
+            INSERT INTO funcionario (nome, cpf, nascimento, salario_bruto, id_departamento) VALUES
+            ('Guilherme',    '10120230344', '1995-04-10', 2100.00, 8), -- Isenção Total
+            ('Patrick',      '40450560677', '1988-11-22', 3500.00, 2), -- Faixa 2 + 1 Dep.
+            ('Jose Ricardo', '20230340455', '1980-01-30', 9200.00, 1), -- Teto de INSS
+            ('Liliane',      '50560670788', '1990-06-12', 5800.00, 3), -- Faixa Média + 3 Deps.
+            ('Nicolas',      '30340450566', '1992-09-15', 4200.00, 5)  -- Comercial + 1 Dep.
+            ON CONFLICT (cpf) DO NOTHING;
+
+            --Inserção de Dependentes para os membros
+            INSERT INTO dependente (nome, cpf, nascimento, parentesco, cpf_funcionario) VALUES
+            -- Dependente do Patrick
+            ('Pedro Silva', '70780890911', '2018-05-15', 'FILHOS', '40450560677'),
+
+            --Dependentes da Liliane (Múltiplos)
+            ('Enzo Souza', '80890910122', '2015-03-20', 'FILHOS', '50560670788'),
+            ('Valentina Souza', '90910120233', '2020-08-10', 'FILHOS', '50560670788'),
+            ('Jorge Souza', '12123234354', '1988-10-05', 'CONJUGE', '50560670788'),
+
+            --Dependente do Nicolas
+            ('Maria Santos', '60670780899', '2012-12-01', 'FILHOS', '30340450566')
+            ON CONFLICT (cpf) DO NOTHING;
             """;
+
+
 
         try (Connection conn = Conexao.getConexaoDB();
              Statement stmt = conn.createStatement()) {

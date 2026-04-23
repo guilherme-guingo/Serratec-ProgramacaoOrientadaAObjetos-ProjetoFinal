@@ -54,17 +54,20 @@ public class MenuView {
 					}
 
 					case 3 -> {
-						System.out.println(">> [Fluxo 3] Listar departamentos - em desenvolvimento");
+						DepartamentoView depView = new DepartamentoView();
+						depView.listar(connection);
 						executando = processarFimDeFluxo(scanner);
 					}
 
 					case 4 -> {
-						System.out.println(">> [Fluxo 4] Funcionários por departamento - em desenvolvimento");
+						FuncionarioPorDepartamentoView funcDeptoView = new FuncionarioPorDepartamentoView();
+						funcDeptoView.exibir(scanner, connection);
 						executando = processarFimDeFluxo(scanner);
 					}
 
 					case 5 -> {
-						System.out.println(">> [Fluxo 5] Histórico de folhas - em desenvolvimento");
+						HistoricoFolhasView historicoView = new HistoricoFolhasView();
+						historicoView.exibir(connection);
 						executando = processarFimDeFluxo(scanner);
 					}
 
