@@ -1,6 +1,6 @@
 package br.com.folhapag.utils;
 
-import br.com.folhapag.exception.NomeInvalido;
+import br.com.folhapag.exceptions.NomeInvalido;
 
 public class ValidarNome {
 

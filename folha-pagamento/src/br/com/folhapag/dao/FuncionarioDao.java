@@ -9,10 +9,10 @@ import java.time.LocalDate;
 import java.util.ArrayList;
 import java.util.List;
 
-import br.com.folhapag.exception.CPFInvalido;
-import br.com.folhapag.exception.DataInvalida;
-import br.com.folhapag.exception.NomeInvalido;
-import br.com.folhapag.exception.SalarioInvalido;
+import br.com.folhapag.exceptions.CPFInvalido;
+import br.com.folhapag.exceptions.DataInvalida;
+import br.com.folhapag.exceptions.NomeInvalido;
+import br.com.folhapag.exceptions.SalarioInvalido;
 import br.com.folhapag.model.Departamento;
 import br.com.folhapag.model.Dependente;
 import br.com.folhapag.model.Funcionario;

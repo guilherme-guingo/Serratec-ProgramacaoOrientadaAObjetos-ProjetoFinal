@@ -1,6 +1,6 @@
 package br.com.folhapag.utils;
 
-import br.com.folhapag.exception.SalarioInvalido;
+import br.com.folhapag.exceptions.SalarioInvalido;
 
 public class ValidarSalario {
 	

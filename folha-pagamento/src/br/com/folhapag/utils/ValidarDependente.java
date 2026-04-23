@@ -1,6 +1,6 @@
 package br.com.folhapag.utils;
 
-import br.com.folhapag.exception.DependenteSemTitular;
+import br.com.folhapag.exceptions.DependenteSemTitular;
 import br.com.folhapag.model.Funcionario;
 
 public class ValidarDependente {

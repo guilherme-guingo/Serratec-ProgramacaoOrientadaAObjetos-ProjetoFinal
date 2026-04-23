@@ -1,7 +1,7 @@
 package br.com.folhapag.utils;
 
 import java.time.LocalDate;
-import br.com.folhapag.exception.DataInvalida;
+import br.com.folhapag.exceptions.DataInvalida;
 
 public class ValidarData {
 	

@@ -1,6 +1,6 @@
 package br.com.folhapag.utils;
 
-import br.com.folhapag.exception.CPFInvalido;
+import br.com.folhapag.exceptions.CPFInvalido;
 
 public class ValidarCPF {
     
