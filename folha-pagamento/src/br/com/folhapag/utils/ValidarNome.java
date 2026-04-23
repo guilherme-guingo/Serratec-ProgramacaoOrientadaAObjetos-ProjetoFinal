@@ -4,7 +4,7 @@ import br.com.folhapag.exceptions.NomeInvalido;
 
 public class ValidarNome {
 
-    public static String validar(String nome) throws NomeInvalido {
+    public static String validarNome(String nome) throws NomeInvalido {
 
         if (nome == null) {
             throw new NomeInvalido("O nome não pode estar vazio.");

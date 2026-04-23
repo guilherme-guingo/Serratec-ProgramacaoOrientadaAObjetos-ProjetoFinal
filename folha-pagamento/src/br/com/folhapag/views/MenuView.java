@@ -10,6 +10,7 @@ import br.com.folhapag.dao.FuncionarioDao;
 import br.com.folhapag.model.FolhaPagamento;
 import br.com.folhapag.model.Funcionario;
 import br.com.folhapag.service.FolhaPagamentoService;
+import br.com.folhapag.utils.ConsoleUtils;
 
 public class MenuView {
 
@@ -68,8 +69,7 @@ public class MenuView {
 					}
 
 					case 0 -> {
-						// Reutiliza o método validador genérico para a confirmação de saída
-						if (perguntarSimNao(scanner, "Deseja realmente sair?")) {
+						if (ConsoleUtils.perguntarSimNao(scanner, "Deseja realmente sair?")) {
 							executando = false;
 							System.out.println("Encerrando o sistema...");
 						}
@@ -125,23 +125,8 @@ public class MenuView {
 		}
 	}
 
-	private boolean perguntarSimNao(Scanner scanner, String pergunta) {
-		while (true) {
-			System.out.print(pergunta + " (S/N): ");
-			String resposta = scanner.nextLine().trim().toUpperCase();
-
-			if (resposta.equals("S")) {
-				return true;
-			} else if (resposta.equals("N")) {
-				return false;
-			}
-
-			System.out.println("Entrada inválida. Digite apenas S ou N.");
-		}
-	}
-
 	private boolean processarFimDeFluxo(Scanner scanner) {
-		boolean querContinuar = perguntarSimNao(scanner, "Deseja acessar o menu novamente?");
+		boolean querContinuar = ConsoleUtils.perguntarSimNao(scanner, "Deseja acessar o menu novamente?");
 
 		if (querContinuar) {
 			// Simula limpeza de tela para melhor visualização antes de voltar ao menu

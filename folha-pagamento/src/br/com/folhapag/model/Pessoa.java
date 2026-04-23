@@ -26,7 +26,7 @@ public abstract class Pessoa {
     }
 
     public void setNome(String nome) throws NomeInvalido {
-        this.nome = ValidarNome.validar(nome);
+        this.nome = ValidarNome.validarNome(nome);
     }
 
     public LocalDate getNascimento() {
@@ -42,6 +42,6 @@ public abstract class Pessoa {
     }
 
     public void setCpf(String cpf) throws CPFInvalido {
-        this.cpf = ValidarCPF.validar(cpf);
+        this.cpf = ValidarCPF.validarCPF(cpf);
     }
 }
