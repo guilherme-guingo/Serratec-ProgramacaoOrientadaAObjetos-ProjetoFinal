@@ -27,6 +27,7 @@ public class FolhaLoteService {
 		try(BufferedReader leitor = new BufferedReader(new FileReader(entrada));
 			BufferedWriter escritor = new BufferedWriter(new FileWriter(saida));Connection connection = Conexao.getConexaoDB();) {
 			
+			FolhaPagamentoDao folhaDao = new FolhaPagamentoDao(connection);
 			DepartamentoDao depDao = new DepartamentoDao(connection);
 			FuncionarioDao funcDao = new FuncionarioDao(connection);
 			
@@ -44,7 +45,7 @@ public class FolhaLoteService {
 
 				if (dados.length == 5) {
 					if (funcionario != null) {
-						processarEscrever(folha, folhaService, funcionario, contexto, escritor, connection);
+						processarEscrever(folha, folhaService, funcionario, contexto, escritor, folhaDao);
 					}
 					
 					dependentes = new ArrayList<>();
@@ -62,7 +63,7 @@ public class FolhaLoteService {
 			}
 
 			if (funcionario != null) {
-				processarEscrever(folha, folhaService, funcionario, contexto, escritor, connection);
+				processarEscrever(folha, folhaService, funcionario, contexto, escritor, folhaDao);
 			}
 			
 			System.out.println("Arquivo enviado com sucesso!");
@@ -74,8 +75,7 @@ public class FolhaLoteService {
 	}
 
 	private void processarEscrever(FolhaPagamento folha, FolhaPagamentoService folhaService, Funcionario funcionario,
-			FolhaContexto contexto, BufferedWriter escritor, Connection conn) {
-		FolhaPagamentoDao folhaDao = new FolhaPagamentoDao(conn);
+			FolhaContexto contexto, BufferedWriter escritor, FolhaPagamentoDao folhaDao) {
 		folha = folhaService.folhaCalculo(funcionario, contexto);
 		try {
 			folhaDao.salvar(folha);

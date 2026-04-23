@@ -46,12 +46,19 @@ public class FolhaManualView {
 	}
 
 	public void exibirDadosFolha(FolhaPagamento folha) {
-		System.out.println("RELATÓRIO DA FOLHA DE PAGAMENTO");
-		System.out.printf(
-				"Funcionário: %s\n" + "Salário Bruto: R$ %.2f\n" + "INSS: R$ %.2f\n" + "IRRF: R$ %.2f\n"
-						+ "Salário Líquido: R$ %.2f\n",
-				folha.getFuncionario().getNome(), folha.getFuncionario().getSalarioBruto(), folha.getINSS(),
-				folha.getIR(), folha.getSalarioLiquido());
+		System.out.println("\n==================================================");
+	    System.out.println("        RELATÓRIO DA FOLHA DE PAGAMENTO");
+	    System.out.println("==================================================");
+	    
+	    System.out.printf("Funcionário:     %s\n", folha.getFuncionario().getNome());
+	    System.out.println("--------------------------------------------------");
+	    System.out.printf("Salário Bruto:   R$ %10.2f\n", folha.getFuncionario().getSalarioBruto());
+	    System.out.printf("(-) INSS:        R$ %10.2f\n", folha.getINSS());
+	    System.out.printf("(-) IRRF:        R$ %10.2f\n", folha.getIR());
+	    System.out.println("--------------------------------------------------");
+	    System.out.printf("SALÁRIO LÍQUIDO: R$ %10.2f\n", folha.getSalarioLiquido());
+	    
+	    System.out.println("==================================================\n");
 	}
 
 	private String lerNome() {
