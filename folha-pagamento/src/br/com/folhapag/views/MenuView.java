@@ -125,14 +125,6 @@ public class MenuView {
 		}
 	}
 
-	// ====================================================================
-	// MÉTODOS UNIFICADOS (Substituem continuarMenu e confirmarSaida)
-	// ====================================================================
-
-	/**
-	 * Método genérico que garante que o usuário só consiga digitar S ou N.
-	 * Retorna true para 'S' e false para 'N'.
-	 */
 	private boolean perguntarSimNao(Scanner scanner, String pergunta) {
 		while (true) {
 			System.out.print(pergunta + " (S/N): ");
@@ -148,9 +140,6 @@ public class MenuView {
 		}
 	}
 
-	/**
-	 * Usa a pergunta genérica acima para tratar o fim de uma tarefa (Cases 1 ao 5)
-	 */
 	private boolean processarFimDeFluxo(Scanner scanner) {
 		boolean querContinuar = perguntarSimNao(scanner, "Deseja acessar o menu novamente?");
 
