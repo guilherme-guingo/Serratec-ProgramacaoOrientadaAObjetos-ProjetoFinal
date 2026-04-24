@@ -38,6 +38,7 @@ public class FolhaManualView {
 
 	public void exibirDadosFolha(FolhaPagamento folha) {
 		FolhaVisualizacaoUtils.exibirRelatorio(folha);
+
 	}
 
 	private String lerNome(String tipoPessoa) {
