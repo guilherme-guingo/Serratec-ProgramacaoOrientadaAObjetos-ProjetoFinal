@@ -5,6 +5,7 @@ import br.com.folhapag.interfaces.CalcularImposto;
 
 public class CalcularINSS implements CalcularImposto {
 
+
 	private final double TETO_INSS_RETIDO = 951.62;
 
 	public CalcularINSS() {

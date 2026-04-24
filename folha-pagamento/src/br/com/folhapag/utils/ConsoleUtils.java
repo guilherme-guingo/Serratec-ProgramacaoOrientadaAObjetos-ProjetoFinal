@@ -7,7 +7,7 @@ public class ConsoleUtils {
     public static boolean perguntarSimNao(Scanner scanner, String pergunta) {
         while (true) {
             System.out.print(pergunta + " (S/N): ");
-            String resposta = scanner.nextLine().trim().toUpperCase();
+            String resposta = scanner.nextLine().trim();
 
             if (resposta.equalsIgnoreCase("S")) {
                 return true;

@@ -37,7 +37,7 @@ public class FolhaManualView {
 	Connection connection = Conexao.getConexaoDB();
 	
 	
-	
+
 	public Funcionario entradaDadosManual(Connection conn) throws SQLException {
 		String nome = lerNome("funcionário");
 		LocalDate data = lerDataNascimento("funcionário");
