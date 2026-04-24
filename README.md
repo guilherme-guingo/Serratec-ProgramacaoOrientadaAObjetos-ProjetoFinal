@@ -8,11 +8,11 @@ Aplicação desenvolvida em **Java** para automatizar o cálculo da folha de pag
 * **Guilherme**
     * *Responsabilidades:* Montagem da arquitetura, refatoração e revisão do codigo completo, testagem manual do codigo, implementação dos fluxos 3 a 5 no menu.
 * **Patrick**
-    * *Responsabilidades:* [Insira aqui as tarefas, classes ou fluxos desenvolvidos]
+    * *Responsabilidades:* Arquitetura do projeto, revisão, lógica do fluxo 1 e 2, criação de views para as folhas e services.
 * **Jose Ricardo**
-    * *Responsabilidades:* [Insira aqui as tarefas, classes ou fluxos desenvolvidos]
+    * *Responsabilidades:* Estrutura do package DAO e criação da base de dados.
 * **Liliane**
-    * *Responsabilidades:* [Insira aqui as tarefas, classes ou fluxos desenvolvidos]
+    * *Responsabilidades:* Criação do menu.
 * **Nicolas**
     * *Responsabilidades:* Tratamento de Erros & Exceções, Criação dos pacotes: "Utils", "Exception" e das classes de validação, além da implementação das mesmas nas classes criadas anteriormente.
 
