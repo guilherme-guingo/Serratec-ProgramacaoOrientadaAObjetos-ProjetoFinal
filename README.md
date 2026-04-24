@@ -49,13 +49,11 @@ Para garantir a organização e a escalabilidade do sistema, dividimos a aplica�
 
 ## 📊 Diagrama UML
 
-Para facilitar a compreensão da arquitetura e das relações entre as classes do sistema, disponibilizamos os diagramas UML na pasta `diagramVersions/` na raiz do repositório.
+O diagrama de classes do projeto ajuda a compreender a arquitetura orientada a objetos e o fluxo de dependências do sistema.
 
-Pensando em diferentes níveis de aprofundamento, os diagramas foram divididos em três versões, todas disponíveis nos formatos de imagem (`.png`, `.svg`) e em código-fonte aberto (`.plantuml`):
+Contém todas as estruturas do sistema (classes de modelo, interfaces, enums, exceções, utilitários, serviços, DAOs e views) e as relações de herança, associação, composição e agregação.
 
-* **simple:** Diagrama completo porem apenas com o nome de cada classe, pensado nas conexões e na visualização.
-* **medium:** Diagrama focado nas classes principais, colocando-as com todos os campos e metodos e deixando as classes complementares dentro dos seus packages, para melhor visualização .
-* **complete:** Diagrama arquitetural completo, contendo todos os pacotes, exceções, utilitários e métodos do sistema e com todos os campos de cada classe.
+* **Onde encontrar:** Acesse o diretório `DiagramUML/` na raiz do repositório. e abra o arquivo `FolhaPagamento.drawio`.
 
 ## 🛠️ Tecnologias Utilizadas
 
