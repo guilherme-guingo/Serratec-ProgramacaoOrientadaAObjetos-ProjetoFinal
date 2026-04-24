@@ -47,6 +47,16 @@ Para garantir a organização e a escalabilidade do sistema, dividimos a aplica�
 
 * **br.com.folhapag.views:** Gerencia a interação via console.
 
+## 📊 Diagrama UML
+
+Para facilitar a compreensão da arquitetura e das relações entre as classes do sistema, disponibilizamos os diagramas UML na pasta `diagramVersions/` na raiz do repositório.
+
+Pensando em diferentes níveis de aprofundamento, os diagramas foram divididos em três versões, todas disponíveis nos formatos de imagem (`.png`, `.svg`) e em código-fonte aberto (`.plantuml`):
+
+* **simple:** Diagrama completo porem apenas com o nome de cada classe, pensado nas conexões e na visualização.
+* **medium:** Diagrama focado nas classes principais, colocando-as com todos os campos e metodos e deixando as classes complementares dentro dos seus packages, para melhor visualização .
+* **complete:** Diagrama arquitetural completo, contendo todos os pacotes, exceções, utilitários e métodos do sistema e com todos os campos de cada classe.
+
 ## 🛠️ Tecnologias Utilizadas
 
 * **Linguagem:** Java
