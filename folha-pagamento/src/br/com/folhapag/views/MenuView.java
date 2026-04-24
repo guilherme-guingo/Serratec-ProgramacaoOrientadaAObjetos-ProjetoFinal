@@ -18,13 +18,13 @@ public class MenuView {
 		try(Connection connection = Conexao.getConexaoDB();
 			Scanner scanner = new Scanner(System.in)){
 
-			boolean executando = true; // Controla a execução do sistema (loop principal)
+			boolean executando = true;
 
-			while (executando) { // Mantém o menu ativo até o usuário decidir sair
+			while (executando) {
 
-				exibirMenu(); // Exibe as opções disponíveis
+				exibirMenu();
 
-				int opcao = lerOpcaoMenu(scanner); // Lê e valida a entrada do usuário
+				int opcao = lerOpcaoMenu(scanner);
 
 				switch (opcao) {
 
@@ -132,14 +132,13 @@ public class MenuView {
 		boolean querContinuar = ConsoleUtils.perguntarSimNao(scanner, "Deseja acessar o menu novamente?");
 
 		if (querContinuar) {
-			// Simula limpeza de tela para melhor visualização antes de voltar ao menu
 			for (int i = 0; i < 10; i++) {
 				System.out.println();
 			}
-			return true; // Mantém executando = true
+			return true;
 		} else {
 			System.out.println("Encerrando o sistema...");
-			return false; // Define executando = false, quebrando o loop principal
+			return false;
 		}
 	}
 }

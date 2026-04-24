@@ -68,7 +68,7 @@ public class FolhaPagamentoDao {
                     lista.add(fp);
 
                 } catch (Exception e) {
-                    System.out.println("⚠️ Registro pulado: " + e.getMessage());
+                    System.out.println("Registro pulado: " + e.getMessage());
                 }
             }
         }
