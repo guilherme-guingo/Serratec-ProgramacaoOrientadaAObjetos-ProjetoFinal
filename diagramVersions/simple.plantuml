@@ -1,0 +1,104 @@
+@startuml
+
+!theme plain
+top to bottom direction
+skinparam linetype ortho
+
+class CPFInvalido
+class CalcularINSS
+class CalcularIR
+interface CalcularImposto << interface >>
+class Conexao
+class ConsoleUtils
+class DataInvalida
+class Departamento
+class DepartamentoDao
+class DepartamentoNaoEncontrado
+class DepartamentoView
+class Dependente
+class DependenteDao
+class DependenteInvalido
+class DependenteSemTitular
+class FolhaContexto
+class FolhaLoteService
+class FolhaLoteView
+class FolhaManualView
+class FolhaPagamento
+class FolhaPagamentoDao
+class FolhaPagamentoService
+class FolhaVisualizacaoUtils
+class FormatoDataInvalido
+class Funcionario
+class FuncionarioDao
+class FuncionarioPorDepartamentoView
+class HistoricoFolhasView
+class Main
+class MenuView
+class NomeInvalido
+enum Parentesco << enumeration >>
+class Pessoa
+class SalarioInvalido
+class SetupBanco
+class ValidarCPF
+class ValidarData
+class ValidarDepartamento
+class ValidarDependente
+class ValidarNome
+class ValidarSalario
+
+CalcularINSS                    -[#008200,dashed]-^  CalcularImposto                
+CalcularIR                      -[#008200,dashed]-^  CalcularImposto                
+DepartamentoDao                 -[#595959,dashed]->  Departamento                   : "«create»"
+DepartamentoView                -[#595959,dashed]->  DepartamentoDao                : "«create»"
+Dependente                     "1" *-[#595959,plain]-> "funcionario\n1" Funcionario                    
+Dependente                     "1" *-[#595959,plain]-> "parentesco\n1" Parentesco                     
+Dependente                      -[#000082,plain]-^  Pessoa                         
+DependenteDao                   -[#595959,dashed]->  Dependente                     : "«create»"
+FolhaContexto                  "1" *-[#595959,plain]-> "funcionario\n1" Funcionario                    
+FolhaLoteService                -[#595959,dashed]->  FolhaContexto                  : "«create»"
+FolhaLoteService                -[#595959,dashed]->  FolhaPagamentoDao              : "«create»"
+FolhaLoteService                -[#595959,dashed]->  FolhaPagamentoService          : "«create»"
+FolhaLoteService                -[#595959,dashed]->  Funcionario                    : "«create»"
+FolhaLoteService                -[#595959,dashed]->  FuncionarioDao                 : "«create»"
+FolhaLoteView                   -[#595959,dashed]->  FolhaLoteService               : "«create»"
+FolhaManualView                 -[#595959,dashed]->  Funcionario                    : "«create»"
+FolhaPagamento                 "1" *-[#595959,plain]-> "funcionario\n1" Funcionario                    
+FolhaPagamentoDao               -[#595959,dashed]->  Departamento                   : "«create»"
+FolhaPagamentoDao               -[#595959,dashed]->  FolhaPagamento                 : "«create»"
+FolhaPagamentoDao               -[#595959,dashed]->  Funcionario                    : "«create»"
+FolhaPagamentoService           -[#595959,dashed]->  CalcularINSS                   : "«create»"
+FolhaPagamentoService          "1" *-[#595959,plain]-> "INSS\n1" CalcularINSS                   
+FolhaPagamentoService          "1" *-[#595959,plain]-> "IRRF\n1" CalcularIR                     
+FolhaPagamentoService           -[#595959,dashed]->  CalcularIR                     : "«create»"
+FolhaPagamentoService           -[#595959,dashed]->  FolhaContexto                  : "«create»"
+FolhaPagamentoService           -[#595959,dashed]->  FolhaPagamento                 : "«create»"
+Funcionario                    "1" *-[#595959,plain]-> "departamento\n1" Departamento                   
+Funcionario                    "1" *-[#595959,plain]-> "dependentes\n*" Dependente                     
+Funcionario                     -[#000082,plain]-^  Pessoa                         
+FuncionarioDao                  -[#595959,dashed]->  Departamento                   : "«create»"
+FuncionarioDao                  -[#595959,dashed]->  DepartamentoDao                : "«create»"
+FuncionarioDao                  -[#595959,dashed]->  DependenteDao                  : "«create»"
+FuncionarioDao                  -[#595959,dashed]->  Funcionario                    : "«create»"
+FuncionarioPorDepartamentoView  -[#595959,dashed]->  FuncionarioDao                 : "«create»"
+HistoricoFolhasView             -[#595959,dashed]->  FolhaPagamentoService          : "«create»"
+HistoricoFolhasView             -[#595959,dashed]->  FuncionarioDao                 : "«create»"
+Main                            -[#595959,dashed]->  MenuView                       : "«create»"
+MenuView                        -[#595959,dashed]->  DepartamentoView               : "«create»"
+MenuView                        -[#595959,dashed]->  FolhaLoteView                  : "«create»"
+MenuView                        -[#595959,dashed]->  FolhaManualView                : "«create»"
+MenuView                        -[#595959,dashed]->  FolhaPagamentoDao              : "«create»"
+MenuView                        -[#595959,dashed]->  FolhaPagamentoService          : "«create»"
+MenuView                        -[#595959,dashed]->  FuncionarioDao                 : "«create»"
+MenuView                        -[#595959,dashed]->  FuncionarioPorDepartamentoView : "«create»"
+MenuView                        -[#595959,dashed]->  HistoricoFolhasView            : "«create»"
+ValidarCPF                      -[#595959,dashed]->  CPFInvalido                    : "«create»"
+ValidarData                     -[#595959,dashed]->  DataInvalida                   : "«create»"
+ValidarData                     -[#595959,dashed]->  FormatoDataInvalido            : "«create»"
+ValidarDepartamento             -[#595959,dashed]->  DepartamentoDao                : "«create»"
+ValidarDepartamento             -[#595959,dashed]->  DepartamentoNaoEncontrado      : "«create»"
+ValidarDependente               -[#595959,dashed]->  Dependente                     : "«create»"
+ValidarDependente               -[#595959,dashed]->  DependenteInvalido             : "«create»"
+ValidarDependente               -[#595959,dashed]->  DependenteSemTitular           : "«create»"
+ValidarNome                     -[#595959,dashed]->  NomeInvalido                   : "«create»"
+ValidarSalario                  -[#595959,dashed]->  SalarioInvalido                : "«create»"
+@enduml
