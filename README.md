@@ -74,7 +74,7 @@ Pensando em diferentes níveis de aprofundamento, os diagramas foram divididos e
 
    * Ação: Altere a variável de senha para a senha do seu PostgreSQL local.
   
-   * Observação: No PostgreSQL faz-se necessário o vínculo do drive PostgreSQL (.jar).
+   * Observação: No PostgreSQL faz-se necessário o vínculo do drive PostgreSQL (.jar), no eclipe o caminho é Build Path/Configure Build Path.
 
 2. Execução
    * Execute a classe **Main.java** localizada no pacote raiz br.com.folhapag.
