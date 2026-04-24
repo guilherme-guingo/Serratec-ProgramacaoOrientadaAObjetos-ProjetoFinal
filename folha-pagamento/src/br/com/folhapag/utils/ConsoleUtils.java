@@ -9,9 +9,9 @@ public class ConsoleUtils {
             System.out.print(pergunta + " (S/N): ");
             String resposta = scanner.nextLine().trim().toUpperCase();
 
-            if (resposta.equals("S")) {
+            if (resposta.equalsIgnoreCase("S")) {
                 return true;
-            } else if (resposta.equals("N")) {
+            } else if (resposta.equalsIgnoreCase("N")) {
                 return false;
             }
 

@@ -37,11 +37,8 @@ public class MenuView {
 
 					case 2 -> {
 						FolhaManualView folhaView = new FolhaManualView();
-						Funcionario funcionario = folhaView.entradaDadosManual();
-
-						FuncionarioDao funcDao = new FuncionarioDao(connection);
-						funcDao.salvar(funcionario);
-
+						Funcionario funcionario = folhaView.entradaDadosManual(connection);
+						
 						FolhaPagamentoService folhaService = new FolhaPagamentoService();
 						FolhaPagamento folha = folhaService.folhaCalculo(funcionario);
 
