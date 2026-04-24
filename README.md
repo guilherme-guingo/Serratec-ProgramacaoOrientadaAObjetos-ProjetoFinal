@@ -14,13 +14,38 @@ Aplicação desenvolvida em **Java** para automatizar o cálculo da folha de pag
 * **Liliane**
     * *Responsabilidades:* [Insira aqui as tarefas, classes ou fluxos desenvolvidos]
 * **Nicolas**
-    * *Responsabilidades:* [Insira aqui as tarefas, classes ou fluxos desenvolvidos]
+    * *Responsabilidades:* Tratamento de Erros & Exceções, Criação dos pacotes: "Utils", "Exception" e das classes de validação, além da implementação das mesmas nas classes criadas anteriormente.
 
 ## 🚀 Funcionalidades
 
 * **Cálculo em Lote (CSV):** Leitura de arquivo TXT/CSV para processamento massivo de funcionários e dependentes, gerando um arquivo de saída com os resultados.
 * **Cadastro Avulso (Manual):** Entrada de dados via console com validações rigorosas (CPF, Datas, Regras de Salário Mínimo).
 * **Persistência de Dados:** Salvamento automático de departamentos, funcionários, dependentes e histórico de folhas calculadas no banco de dados.
+
+## 🏗️ Estrutura do Projeto (Pacotes)
+Para garantir a organização e a escalabilidade do sistema, dividimos a aplicação nos seguintes pacotes dentro de br.com.folhapag:
+
+* **br.com.folhapag:** Contém a classe Main.java, o ponto de entrada da aplicação que orquestra o início do sistema.
+
+* **br.com.folhapag.config:** Contém a classe Conexao.java, responsável pela configuração do Driver JDBC e por estabelecer a conexão com o banco de dados PostgreSQL. 
+
+* **br.com.folhapag.contexts:** Contém a FolhaContexto.java, que gerencia o estado global e o fluxo de inicialização da aplicação, garantindo que o banco seja populado corretamente ao iniciar.
+  
+* **br.com.folhapag.dao:** Contém as classes responsáveis pela persistência: DepartamentoDao, DependenteDao, FolhaPagamentoDao e FuncionarioDao. Elas isolam os comandos SQL do restante da lógica de negócio.
+
+* **br.com.folhapag.enums:** Contém o enumerador Parentesco.java, que restringe os tipos de dependentes permitidos, evitando erros de digitação e inconsistências no banco.
+
+* **br.com.folhapag.exception:** Contém as exceções personalizadas do projeto. Elas permitem que o sistema lance erros específicos (ex: CPF inválido) em vez de erros genéricos do Java, melhorando o debug e a experiência do usuário.
+
+* **br.com.folhapag.interfaces:** Contém a interface CalcularImposto.java, estabelecendo um contrato para os cálculos do sistema, o que facilita a manutenção e a aplicação de padrões.
+
+* **br.com.folhapag.model:** Representa os objetos de dados do sistema. Inclui a classe Pessoa.java , demonstrando o uso de Herança para as classes Funcionario e Dependente, além de Departamento e FolhaPagamento.
+  
+* **br.com.folhapag.service:** Contém a lógica de processamento massivo (FolhaLoteService). Classes de cálculo específico: CalcularINSS e CalcularIR, que aplicam as alíquotas oficiais.
+
+* **br.com.folhapag.utils:** Classes utilitárias focadas em garantir a integridade dos dados antes de chegarem ao banco. Centraliza as regras de validação para evitar repetição de código.
+
+* **br.com.folhapag.views:** Gerencia a interação via console.
 
 ## 🛠️ Tecnologias Utilizadas
 
@@ -31,11 +56,21 @@ Aplicação desenvolvida em **Java** para automatizar o cálculo da folha de pag
 * **Padrões de Projeto:** Strategy (para cálculo de impostos)
 
 ## ⚙️ Como configurar e rodar o projeto
+1. Preparando o Banco de Dados
+   * Crie um banco de dados chamado **banco_folha**.
 
-### 1. Preparando o Banco de Dados
-Certifique-se de ter o PostgreSQL instalado na sua máquina.
-1. Abra o `pgAdmin` ou o seu terminal SQL.
-2. Crie um novo banco de dados chamado `banco_folha`:
-   ```sql
-   CREATE DATABASE banco_folha;
-3. Execute os scripts DDL disponíveis no projeto para criar as tabelas necessárias.
+   * Execute os scripts DDL inclusos no projeto.
+
+2. Configuração de Acesso
+   * Para que o sistema conecte ao seu banco local, é necessário ajustar as credenciais no código de conexão:
+
+   * Arquivo: Localize a classe **Conexao.java** no pacote **br.com.folhapag.config**.
+
+   * Ação: Altere a variável de senha (password) para a senha do seu PostgreSQL local.
+
+3. Execução
+   * Execute a classe **Main.java** localizada no pacote raiz br.com.folhapag.
+
+   * Dados Prontos: O sistema já iniciará com alguns dados de exemplo (Departamentos/Cargos) carregados no banco.
+
+   * Teste de Arquivo: Para o cálculo em lote, utilize o arquivo dados.csv que se encontra na raiz da pasta do projeto.
