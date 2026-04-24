@@ -1,12 +1,12 @@
 <mxfile host="Electron">
   <diagram name="Página-1" id="y0nqecoj70dzUlIym8XV">
-    <mxGraphModel dx="1212" dy="793" grid="1" gridSize="10" guides="1" tooltips="1" connect="1" arrows="1" fold="1" page="1" pageScale="1" pageWidth="827" pageHeight="1169" math="0" shadow="0">
+    <mxGraphModel dx="1471" dy="963" grid="1" gridSize="10" guides="1" tooltips="1" connect="1" arrows="1" fold="1" page="1" pageScale="1" pageWidth="827" pageHeight="1169" math="0" shadow="0">
       <root>
         <mxCell id="0" />
         <mxCell id="1" parent="0" />
         <mxCell id="uJeLVWLu3xmzQLyKGZ_0-1" parent="1" style="swimlane;startSize=20;horizontal=1;containerType=tree;rounded=1;" value="model" vertex="1">
           <mxGeometry height="750" width="1170" x="500" y="20" as="geometry">
-            <mxRectangle height="30" width="70" x="500" y="20" as="alternateBounds" />
+            <mxRectangle height="30" width="70" x="530" y="20" as="alternateBounds" />
           </mxGeometry>
         </mxCell>
         <mxCell id="uJeLVWLu3xmzQLyKGZ_0-285" parent="uJeLVWLu3xmzQLyKGZ_0-1" style="verticalAlign=top;align=left;overflow=fill;html=1;whiteSpace=wrap;rounded=1;" value="&lt;p style=&quot;margin:0px;margin-top:4px;text-align:center;&quot;&gt;&lt;i&gt;&amp;lt;&amp;lt;abstract&amp;gt;&amp;gt;&lt;/i&gt;&lt;br&gt;&lt;b&gt;Pessoa&lt;/b&gt;&lt;/p&gt;&lt;hr size=&quot;1&quot; style=&quot;border-style:solid;&quot;&gt;&lt;p style=&quot;margin:0px;margin-left:4px;&quot;&gt;- nome: String&lt;br&gt;- cpf: String&lt;/p&gt;&lt;p style=&quot;margin:0px;margin-left:4px;&quot;&gt;- dataNascimento: LocalDate&lt;/p&gt;&lt;hr size=&quot;1&quot; style=&quot;border-style:solid;&quot;&gt;&lt;p style=&quot;margin:0px;margin-left:4px;&quot;&gt;+ getIdade(): int&lt;/p&gt;" vertex="1">
@@ -86,41 +86,14 @@
           </mxGeometry>
         </mxCell>
         <mxCell id="uJeLVWLu3xmzQLyKGZ_0-282" parent="1" style="swimlane;startSize=20;horizontal=1;containerType=tree;rounded=1;labelBackgroundColor=none;" value="views" vertex="1">
-          <mxGeometry height="349" width="600" x="1470" y="1150" as="geometry">
+          <mxGeometry height="170" width="265.2" x="1470" y="790" as="geometry">
             <mxRectangle height="30" width="70" x="530" y="20" as="alternateBounds" />
           </mxGeometry>
-        </mxCell>
-        <mxCell id="sGgUcVB7R86ZDQ-P5l5T-7" parent="uJeLVWLu3xmzQLyKGZ_0-282" style="verticalAlign=top;align=left;overflow=fill;html=1;whiteSpace=wrap;rounded=1;" value="&lt;p style=&quot;margin:0px;margin-top:4px;text-align:center;&quot;&gt;&lt;b&gt;FolhaLoteView&lt;/b&gt;&lt;/p&gt;&lt;hr size=&quot;1&quot; style=&quot;border-style:solid;&quot;&gt;&lt;p style=&quot;margin:0px;margin-left:4px;&quot;&gt;&lt;span style=&quot;background-color: transparent; color: light-dark(rgb(0, 0, 0), rgb(255, 255, 255));&quot;&gt;- double: LocalDate&lt;/span&gt;&lt;/p&gt;&lt;p style=&quot;margin:0px;margin-left:4px;&quot;&gt;- valorINSS: double&lt;/p&gt;&lt;p style=&quot;margin:0px;margin-left:4px;&quot;&gt;- valorIRRF: double&lt;/p&gt;&lt;hr size=&quot;1&quot; style=&quot;border-style: solid;&quot;&gt;&lt;p style=&quot;margin: 0px 0px 0px 4px;&quot;&gt;+ getters/setters()&lt;/p&gt;" vertex="1">
-          <mxGeometry height="119" width="275" x="10" y="30" as="geometry" />
-        </mxCell>
-        <mxCell id="sGgUcVB7R86ZDQ-P5l5T-8" parent="uJeLVWLu3xmzQLyKGZ_0-282" style="verticalAlign=top;align=left;overflow=fill;html=1;whiteSpace=wrap;rounded=1;" value="&lt;p style=&quot;margin:0px;margin-top:4px;text-align:center;&quot;&gt;&lt;b&gt;FolaManuView&lt;/b&gt;&lt;/p&gt;&lt;hr size=&quot;1&quot; style=&quot;border-style:solid;&quot;&gt;&lt;p style=&quot;margin:0px;margin-left:4px;&quot;&gt;&lt;span style=&quot;background-color: transparent; color: light-dark(rgb(0, 0, 0), rgb(255, 255, 255));&quot;&gt;- double: LocalDate&lt;/span&gt;&lt;/p&gt;&lt;p style=&quot;margin:0px;margin-left:4px;&quot;&gt;- valorINSS: double&lt;/p&gt;&lt;p style=&quot;margin:0px;margin-left:4px;&quot;&gt;- valorIRRF: double&lt;/p&gt;&lt;hr size=&quot;1&quot; style=&quot;border-style: solid;&quot;&gt;&lt;p style=&quot;margin: 0px 0px 0px 4px;&quot;&gt;+ getters/setters()&lt;/p&gt;" vertex="1">
-          <mxGeometry height="119" width="275" x="300" y="30" as="geometry" />
-        </mxCell>
-        <mxCell id="sGgUcVB7R86ZDQ-P5l5T-9" parent="uJeLVWLu3xmzQLyKGZ_0-282" style="verticalAlign=top;align=left;overflow=fill;html=1;whiteSpace=wrap;rounded=1;" value="&lt;p style=&quot;margin:0px;margin-top:4px;text-align:center;&quot;&gt;&lt;b&gt;TesteLote&lt;/b&gt;&lt;/p&gt;&lt;hr size=&quot;1&quot; style=&quot;border-style:solid;&quot;&gt;&lt;p style=&quot;margin:0px;margin-left:4px;&quot;&gt;&lt;span style=&quot;background-color: transparent; color: light-dark(rgb(0, 0, 0), rgb(255, 255, 255));&quot;&gt;- double: LocalDate&lt;/span&gt;&lt;/p&gt;&lt;p style=&quot;margin:0px;margin-left:4px;&quot;&gt;- valorINSS: double&lt;/p&gt;&lt;p style=&quot;margin:0px;margin-left:4px;&quot;&gt;- valorIRRF: double&lt;/p&gt;&lt;hr size=&quot;1&quot; style=&quot;border-style: solid;&quot;&gt;&lt;p style=&quot;margin: 0px 0px 0px 4px;&quot;&gt;+ getters/setters()&lt;/p&gt;" vertex="1">
-          <mxGeometry height="119" width="275" x="300" y="210" as="geometry" />
-        </mxCell>
-        <mxCell id="sGgUcVB7R86ZDQ-P5l5T-10" parent="uJeLVWLu3xmzQLyKGZ_0-282" style="verticalAlign=top;align=left;overflow=fill;html=1;whiteSpace=wrap;rounded=1;" value="&lt;p style=&quot;margin:0px;margin-top:4px;text-align:center;&quot;&gt;&lt;b&gt;MenuView&lt;/b&gt;&lt;/p&gt;&lt;hr size=&quot;1&quot; style=&quot;border-style:solid;&quot;&gt;&lt;p style=&quot;margin:0px;margin-left:4px;&quot;&gt;&lt;span style=&quot;background-color: transparent; color: light-dark(rgb(0, 0, 0), rgb(255, 255, 255));&quot;&gt;- double: LocalDate&lt;/span&gt;&lt;/p&gt;&lt;p style=&quot;margin:0px;margin-left:4px;&quot;&gt;- valorINSS: double&lt;/p&gt;&lt;p style=&quot;margin:0px;margin-left:4px;&quot;&gt;- valorIRRF: double&lt;/p&gt;&lt;hr size=&quot;1&quot; style=&quot;border-style: solid;&quot;&gt;&lt;p style=&quot;margin: 0px 0px 0px 4px;&quot;&gt;+ getters/setters()&lt;/p&gt;" vertex="1">
-          <mxGeometry height="119" width="275" x="10" y="210" as="geometry" />
         </mxCell>
         <mxCell id="uJeLVWLu3xmzQLyKGZ_0-283" parent="1" style="swimlane;startSize=20;horizontal=1;containerType=tree;rounded=1;labelBackgroundColor=none;" value="exceptions" vertex="1">
-          <mxGeometry height="721" width="265.2" x="1150" y="999" as="geometry">
+          <mxGeometry height="170" width="265.2" x="1150" y="999" as="geometry">
             <mxRectangle height="30" width="70" x="530" y="20" as="alternateBounds" />
           </mxGeometry>
-        </mxCell>
-        <mxCell id="sGgUcVB7R86ZDQ-P5l5T-2" parent="uJeLVWLu3xmzQLyKGZ_0-283" style="verticalAlign=top;align=left;overflow=fill;html=1;whiteSpace=wrap;rounded=1;" value="&lt;p style=&quot;margin:0px;margin-top:4px;text-align:center;&quot;&gt;&lt;i&gt;&amp;lt;&amp;lt;exception&amp;gt;&amp;gt;&lt;/i&gt;&lt;b&gt;&lt;/b&gt;&lt;/p&gt;&lt;p style=&quot;margin:0px;margin-top:4px;text-align:center;&quot;&gt;&lt;b&gt;CPFInvalido&lt;/b&gt;&lt;/p&gt;&lt;hr size=&quot;1&quot; style=&quot;border-style:solid;&quot;&gt;&lt;p style=&quot;margin:0px;margin-left:4px;&quot;&gt;+ CPFInvalido(string mensagem): type&lt;/p&gt;" vertex="1">
-          <mxGeometry height="79" width="210" x="27.6" y="61" as="geometry" />
-        </mxCell>
-        <mxCell id="sGgUcVB7R86ZDQ-P5l5T-3" parent="uJeLVWLu3xmzQLyKGZ_0-283" style="verticalAlign=top;align=left;overflow=fill;html=1;whiteSpace=wrap;rounded=1;" value="&lt;p style=&quot;margin:0px;margin-top:4px;text-align:center;&quot;&gt;&lt;i&gt;&amp;lt;&amp;lt;exception&amp;gt;&amp;gt;&lt;/i&gt;&lt;b&gt;&lt;/b&gt;&lt;/p&gt;&lt;p style=&quot;margin:0px;margin-top:4px;text-align:center;&quot;&gt;&lt;b&gt;DataInvalida&lt;/b&gt;&lt;/p&gt;&lt;hr size=&quot;1&quot; style=&quot;border-style:solid;&quot;&gt;&lt;p style=&quot;margin:0px;margin-left:4px;&quot;&gt;+ DataInvalida(string mensagem): type&lt;/p&gt;" vertex="1">
-          <mxGeometry height="99" width="210" x="27.6" y="201" as="geometry" />
-        </mxCell>
-        <mxCell id="sGgUcVB7R86ZDQ-P5l5T-4" parent="uJeLVWLu3xmzQLyKGZ_0-283" style="verticalAlign=top;align=left;overflow=fill;html=1;whiteSpace=wrap;rounded=1;" value="&lt;p style=&quot;margin:0px;margin-top:4px;text-align:center;&quot;&gt;&lt;i&gt;&amp;lt;&amp;lt;exception&amp;gt;&amp;gt;&lt;/i&gt;&lt;b&gt;&lt;/b&gt;&lt;/p&gt;&lt;p style=&quot;margin:0px;margin-top:4px;text-align:center;&quot;&gt;&lt;b&gt;SalarioInvalido&lt;/b&gt;&lt;/p&gt;&lt;hr size=&quot;1&quot; style=&quot;border-style:solid;&quot;&gt;&lt;p style=&quot;margin:0px;margin-left:4px;&quot;&gt;+ SalarioInvalido(string mensagem): type&lt;/p&gt;" vertex="1">
-          <mxGeometry height="104" width="210" x="27.6" y="326" as="geometry" />
-        </mxCell>
-        <mxCell id="sGgUcVB7R86ZDQ-P5l5T-5" parent="uJeLVWLu3xmzQLyKGZ_0-283" style="verticalAlign=top;align=left;overflow=fill;html=1;whiteSpace=wrap;rounded=1;" value="&lt;p style=&quot;margin:0px;margin-top:4px;text-align:center;&quot;&gt;&lt;i&gt;&amp;lt;&amp;lt;exception&amp;gt;&amp;gt;&lt;/i&gt;&lt;b&gt;&lt;/b&gt;&lt;/p&gt;&lt;p style=&quot;margin:0px;margin-top:4px;text-align:center;&quot;&gt;&lt;b&gt;DependenteSemTitular&lt;/b&gt;&lt;/p&gt;&lt;hr size=&quot;1&quot; style=&quot;border-style:solid;&quot;&gt;&lt;p style=&quot;margin:0px;margin-left:4px;&quot;&gt;+ DependenteSemTitular(string mensagem): type&lt;/p&gt;" vertex="1">
-          <mxGeometry height="89" width="210" x="27.6" y="481" as="geometry" />
-        </mxCell>
-        <mxCell id="sGgUcVB7R86ZDQ-P5l5T-6" parent="uJeLVWLu3xmzQLyKGZ_0-283" style="verticalAlign=top;align=left;overflow=fill;html=1;whiteSpace=wrap;rounded=1;" value="&lt;p style=&quot;margin:0px;margin-top:4px;text-align:center;&quot;&gt;&lt;i&gt;&amp;lt;&amp;lt;exception&amp;gt;&amp;gt;&lt;/i&gt;&lt;b&gt;&lt;/b&gt;&lt;/p&gt;&lt;p style=&quot;margin:0px;margin-top:4px;text-align:center;&quot;&gt;&lt;b&gt;NomeInvalido&lt;/b&gt;&lt;/p&gt;&lt;hr size=&quot;1&quot; style=&quot;border-style:solid;&quot;&gt;&lt;p style=&quot;margin:0px;margin-left:4px;&quot;&gt;+ NomeInvalido(string mensagem): type&lt;/p&gt;" vertex="1">
-          <mxGeometry height="89" width="210" x="27.6" y="621" as="geometry" />
         </mxCell>
         <mxCell id="1eZil5OiU41Y6Tp0m1k4-18" parent="1" style="swimlane;startSize=20;horizontal=1;containerType=tree;rounded=1;labelBackgroundColor=none;" value="utils" vertex="1">
           <mxGeometry height="441" width="600" x="530" y="980" as="geometry">
@@ -138,14 +111,6 @@
         </mxCell>
         <mxCell id="1eZil5OiU41Y6Tp0m1k4-24" parent="1eZil5OiU41Y6Tp0m1k4-18" style="verticalAlign=top;align=left;overflow=fill;html=1;whiteSpace=wrap;rounded=1;" value="&lt;p style=&quot;margin:0px;margin-top:4px;text-align:center;&quot;&gt;&lt;b&gt;ValidadorSalario&lt;/b&gt;&lt;/p&gt;&lt;hr size=&quot;1&quot; style=&quot;border-style:solid;&quot;&gt;&lt;p style=&quot;margin:0px;margin-left:4px;&quot;&gt;+ verificarSalario(string CPF): boolean&lt;/p&gt;" vertex="1">
           <mxGeometry height="69" width="210" x="315" y="140" as="geometry" />
-        </mxCell>
-        <mxCell id="urjcz5ThKflZJynyD9Vp-1" parent="1" style="swimlane;startSize=20;horizontal=1;containerType=tree;rounded=1;labelBackgroundColor=none;" value="contexts" vertex="1">
-          <mxGeometry height="321" width="365" x="1460" y="790" as="geometry">
-            <mxRectangle height="30" width="70" x="530" y="20" as="alternateBounds" />
-          </mxGeometry>
-        </mxCell>
-        <mxCell id="urjcz5ThKflZJynyD9Vp-2" parent="urjcz5ThKflZJynyD9Vp-1" style="verticalAlign=top;align=left;overflow=fill;html=1;whiteSpace=wrap;rounded=1;" value="&lt;p style=&quot;margin:0px;margin-top:4px;text-align:center;&quot;&gt;&lt;b&gt;FolhaContexto&lt;/b&gt;&lt;/p&gt;&lt;hr size=&quot;1&quot; style=&quot;border-style:solid;&quot;&gt;&lt;p style=&quot;margin:0px;margin-left:4px;&quot;&gt;&lt;span style=&quot;background-color: transparent; color: light-dark(rgb(0, 0, 0), rgb(255, 255, 255));&quot;&gt;- double: LocalDate&lt;/span&gt;&lt;/p&gt;&lt;p style=&quot;margin:0px;margin-left:4px;&quot;&gt;- valorINSS: double&lt;/p&gt;&lt;p style=&quot;margin:0px;margin-left:4px;&quot;&gt;- valorIRRF: double&lt;/p&gt;&lt;hr size=&quot;1&quot; style=&quot;border-style: solid;&quot;&gt;&lt;p style=&quot;margin: 0px 0px 0px 4px;&quot;&gt;+ getters/setters()&lt;/p&gt;" vertex="1">
-          <mxGeometry height="119" width="275" x="45" y="51" as="geometry" />
         </mxCell>
       </root>
     </mxGraphModel>

@@ -3,10 +3,10 @@ package br.com.folhapag.model;
 import java.time.LocalDate;
 
 import br.com.folhapag.enums.Parentesco;
-import br.com.folhapag.exception.CPFInvalido;
-import br.com.folhapag.exception.DataInvalida;
-import br.com.folhapag.exception.DependenteSemTitular;
-import br.com.folhapag.exception.NomeInvalido;
+import br.com.folhapag.exceptions.CPFInvalido;
+import br.com.folhapag.exceptions.DataInvalida;
+import br.com.folhapag.exceptions.DependenteSemTitular;
+import br.com.folhapag.exceptions.NomeInvalido;
 import br.com.folhapag.utils.ValidarDependente;
 
 

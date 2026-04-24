@@ -9,10 +9,10 @@ import java.time.LocalDate;
 import java.util.ArrayList;
 import java.util.List;
 
-import br.com.folhapag.exception.CPFInvalido;
-import br.com.folhapag.exception.DataInvalida;
-import br.com.folhapag.exception.NomeInvalido;
-import br.com.folhapag.exception.SalarioInvalido;
+import br.com.folhapag.exceptions.CPFInvalido;
+import br.com.folhapag.exceptions.DataInvalida;
+import br.com.folhapag.exceptions.NomeInvalido;
+import br.com.folhapag.exceptions.SalarioInvalido;
 import br.com.folhapag.model.Departamento;
 import br.com.folhapag.model.Dependente;
 import br.com.folhapag.model.Funcionario;
@@ -29,14 +29,13 @@ public class FuncionarioDao {
         try (PreparedStatement ps = conn.prepareStatement(sql)) {
             ps.setString(1, f.getCpf());
             ps.setString(2, f.getNome());
-            ps.setDate(3, Date.valueOf(f.getNascimento())); // Converte LocalDate para SQL Date
+            ps.setDate(3, Date.valueOf(f.getNascimento()));
             ps.setDouble(4, f.getSalarioBruto());
-            ps.setInt(5, f.getDepartamento().getId()); // ID vindo do campo 5 do CSV
+            ps.setInt(5, f.getDepartamento().getId());
             ps.executeUpdate();
         }
     }
     
-    //Verifica se um CPF já existe no banco.
     public boolean existeCpf(String cpf) throws SQLException {
         String sql = "SELECT COUNT(*) FROM funcionario WHERE cpf = ?";
         try (PreparedStatement ps = conn.prepareStatement(sql)) {
@@ -50,7 +49,6 @@ public class FuncionarioDao {
         return false;
     }
     
-    //Busca um funcionário completo pelo CPF
     public Funcionario buscarPorCpf(String cpf) throws SQLException {
         String sql = "SELECT * FROM funcionario WHERE cpf = ?";
         
@@ -80,7 +78,41 @@ public class FuncionarioDao {
         }
         return null;
     }
-    
+
+    public List<Funcionario> listarTodosComDependetes() throws SQLException {
+        List<Funcionario> lista = new ArrayList<>();
+        String sql = "SELECT f.*, d.nome AS nome_dep FROM funcionario f " +
+                "JOIN departamento d ON f.id_departamento = d.id ORDER BY f.nome";
+
+        DependenteDao depDao = new DependenteDao(this.conn);
+
+        try (PreparedStatement ps = conn.prepareStatement(sql);
+             ResultSet rs = ps.executeQuery()) {
+
+            while (rs.next()) {
+                try {
+                    Departamento depto = new Departamento(rs.getInt("id_departamento"));
+                    depto.setNome(rs.getString("nome_dep"));
+
+                    Funcionario f = new Funcionario(
+                            rs.getString("nome"),
+                            rs.getString("cpf"),
+                            rs.getDate("nascimento").toLocalDate(),
+                            rs.getDouble("salario_bruto"),
+                            depto
+                    );
+
+                    f.setDependentes(depDao.buscarPorFuncionario(f));
+                    lista.add(f);
+
+                } catch (Exception e) {
+                    System.out.println("Erro ao carregar funcionário " + rs.getString("nome") + ": " + e.getMessage());
+                }
+            }
+        }
+        return lista;
+    }
+
     public List<Funcionario> listarPorDepartamento(int idDepto) throws SQLException {
         List<Funcionario> lista = new ArrayList<>();
         String sql = "SELECT * FROM funcionario WHERE id_departamento = ? ORDER BY nome";
@@ -98,7 +130,6 @@ public class FuncionarioDao {
                         Date dataSql = rs.getDate("nascimento");
                         LocalDate dataLocal = (dataSql != null) ? dataSql.toLocalDate() : null;
 
-                        // 1. Criamos o objeto Funcionário com o departamento
                         Funcionario f = new Funcionario(
                             rs.getString("nome"),
                             rs.getString("cpf"),
@@ -107,7 +138,6 @@ public class FuncionarioDao {
                             deptoCompleto
                         );
                         
-                        // 2. Buscamos os dependentes
                         List<Dependente> dependentes = depDao.buscarPorFuncionario(f);
                         
                         f.setDependentes(dependentes); 

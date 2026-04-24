@@ -8,7 +8,7 @@ public class Conexao {
 
     private static final String URL = "jdbc:postgresql://localhost:5432/banco_folha";
     private static final String USER = "postgres";
-    private static final String PASS = "senha_banco";
+    private static final String PASS = "123456";
 
     public static Connection getConexaoDB() {
         try {

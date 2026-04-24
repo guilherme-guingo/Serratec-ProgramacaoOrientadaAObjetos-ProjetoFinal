@@ -1,0 +1,283 @@
+@startuml
+
+!theme plain
+top to bottom direction
+skinparam linetype ortho
+
+class CPFInvalido {
+  + CPFInvalido(String): 
+}
+class CalcularINSS {
+  + CalcularINSS(): 
+  + calcularImposto(FolhaContexto): void
+  - calcAliquota(FolhaContexto): double
+  - calcParcela(FolhaContexto): double
+}
+class CalcularIR {
+  + CalcularIR(): 
+  - calcAliquota(double): double
+  + calcularImposto(FolhaContexto): void
+  - calcParcela(double): double
+}
+interface CalcularImposto << interface >> {
+  + calcularImposto(FolhaContexto): void
+}
+class Conexao {
+  + Conexao(): 
+   conexaoDB: Connection
+}
+class ConsoleUtils {
+  + ConsoleUtils(): 
+  + perguntarSimNao(Scanner, String): boolean
+}
+class DataInvalida {
+  + DataInvalida(String): 
+}
+class Departamento {
+  + Departamento(int): 
+  + Departamento(int, String): 
+  + Departamento(String): 
+  - nome: String
+  - id: int
+  + toString(): String
+   nome: String
+   id: int
+}
+class DepartamentoDao {
+  + DepartamentoDao(Connection): 
+  + listarTodos(): List<Departamento>
+  + buscarIdPorNome(String): int
+  + buscarPorId(int): Departamento
+}
+class DepartamentoNaoEncontrado {
+  + DepartamentoNaoEncontrado(String): 
+}
+class DepartamentoView {
+  + DepartamentoView(): 
+  + listar(Connection): void
+}
+class Dependente {
+  + Dependente(String, String, LocalDate, Parentesco, Funcionario): 
+  - funcionario: Funcionario
+  - parentesco: Parentesco
+   funcionario: Funcionario
+   parentesco: Parentesco
+}
+class DependenteDao {
+  + DependenteDao(Connection): 
+  + salvar(Dependente): void
+  + buscarPorFuncionario(Funcionario): List<Dependente>
+}
+class DependenteInvalido {
+  + DependenteInvalido(String): 
+}
+class DependenteSemTitular {
+  + DependenteSemTitular(String): 
+}
+class FolhaContexto {
+  + FolhaContexto(): 
+  - funcionario: Funcionario
+  - valorIRRF: double
+  - valorINSS: double
+   valorIRRF: double
+   funcionario: Funcionario
+   valorINSS: double
+}
+class FolhaLoteService {
+  + FolhaLoteService(): 
+  + processarLote(String, String): void
+  - processarEscrever(FolhaPagamentoService, Funcionario, FolhaContexto, BufferedWriter, Connection): void
+  - escreverCSV(FolhaPagamento): String
+}
+class FolhaLoteView {
+  + FolhaLoteView(): 
+  + entradaLote(Scanner): void
+}
+class FolhaManualView {
+  + FolhaManualView(): 
+  - lerDataNascimento(String): LocalDate
+  + exibirDadosFolha(FolhaPagamento): void
+  - lerSalario(): double
+  - lerDepartamento(): Departamento?
+  - lerNome(String): String
+  + entradaDadosManual(): Funcionario
+  - lerParentesco(): Parentesco
+  + lerDependentes(Funcionario): List<Dependente>
+  - lerCPF(String): String
+}
+class FolhaPagamento {
+  + FolhaPagamento(): 
+  + FolhaPagamento(Funcionario, double, double, double): 
+  - salarioLiquido: double
+  - funcionario: Funcionario
+  - data: LocalDate
+  - INSS: double
+   IR: double
+   data: LocalDate
+   INSS: double
+   funcionario: Funcionario
+   salarioLiquido: double
+}
+class FolhaPagamentoDao {
+  + FolhaPagamentoDao(Connection): 
+  + salvar(FolhaPagamento): void
+  + listarTodos(): List<FolhaPagamento>
+}
+class FolhaPagamentoService {
+  + FolhaPagamentoService(): 
+  + folhaCalculo(Funcionario, FolhaContexto): FolhaPagamento
+  + folhaCalculo(Funcionario): FolhaPagamento
+}
+class FolhaVisualizacaoUtils {
+  + FolhaVisualizacaoUtils(): 
+  + exibirRelatorio(FolhaPagamento): void
+}
+class FormatoDataInvalido {
+  + FormatoDataInvalido(String): 
+}
+class Funcionario {
+  + Funcionario(String, String, LocalDate, double, Departamento): 
+  - salarioBruto: double
+  - departamento: Departamento
+  - dependentes: List<Dependente>
+   departamento: Departamento
+   salarioBruto: double
+   dependentes: List<Dependente>
+}
+class FuncionarioDao {
+  + FuncionarioDao(Connection): 
+  + salvar(Funcionario): void
+  + buscarPorCpf(String): Funcionario
+  + existeCpf(String): boolean
+  + listarTodosComDependetes(): List<Funcionario>
+  + listarPorDepartamento(int): List<Funcionario>
+  + listarResumoFuncionarios(): void
+}
+class FuncionarioPorDepartamentoView {
+  + FuncionarioPorDepartamentoView(): 
+  + exibir(Scanner, Connection): void
+}
+class HistoricoFolhasView {
+  + HistoricoFolhasView(): 
+  + exibir(Connection): void
+}
+class Main {
+  + Main(): 
+  + main(String[]): void
+}
+class MenuView {
+  + MenuView(): 
+  - lerOpcaoMenu(Scanner): int
+  + executarMenu(): void
+  - exibirMenu(): void
+  - processarFimDeFluxo(Scanner): boolean
+}
+class NomeInvalido {
+  + NomeInvalido(String): 
+}
+enum Parentesco << enumeration >> {
+  + Parentesco(): 
+  + validarParentesco(String): Parentesco
+  + values(): Parentesco[]
+  + valueOf(String): Parentesco
+}
+class Pessoa {
+  + Pessoa(String, LocalDate, String): 
+  - cpf: String
+  - nome: String
+  - nascimento: LocalDate
+   cpf: String
+   nome: String
+   nascimento: LocalDate
+}
+class SalarioInvalido {
+  + SalarioInvalido(String): 
+}
+class SetupBanco {
+  + SetupBanco(): 
+  + inicializarTabelas(): void
+}
+class ValidarCPF {
+  + ValidarCPF(): 
+  + validarCPF(String): String
+}
+class ValidarData {
+  + ValidarData(): 
+  + validar(String): LocalDate
+  + validar(LocalDate): LocalDate
+}
+class ValidarDepartamento {
+  + ValidarDepartamento(): 
+  + validar(String, Connection): Departamento
+}
+class ValidarDependente {
+  + ValidarDependente(): 
+  + validarTitular(Funcionario): Funcionario
+  + validarECriar(String, String, LocalDate, Parentesco, Funcionario): Dependente
+}
+class ValidarNome {
+  + ValidarNome(): 
+  + validarNome(String): String
+}
+class ValidarSalario {
+  + ValidarSalario(): 
+  + validar(double): double
+  + validar(String): double
+}
+
+CalcularINSS                    -[#008200,dashed]-^  CalcularImposto                
+CalcularIR                      -[#008200,dashed]-^  CalcularImposto                
+DepartamentoDao                 -[#595959,dashed]->  Departamento                   : "«create»"
+DepartamentoView                -[#595959,dashed]->  DepartamentoDao                : "«create»"
+Dependente                     "1" *-[#595959,plain]-> "funcionario\n1" Funcionario                    
+Dependente                     "1" *-[#595959,plain]-> "parentesco\n1" Parentesco                     
+Dependente                      -[#000082,plain]-^  Pessoa                         
+DependenteDao                   -[#595959,dashed]->  Dependente                     : "«create»"
+FolhaContexto                  "1" *-[#595959,plain]-> "funcionario\n1" Funcionario                    
+FolhaLoteService                -[#595959,dashed]->  FolhaContexto                  : "«create»"
+FolhaLoteService                -[#595959,dashed]->  FolhaPagamentoDao              : "«create»"
+FolhaLoteService                -[#595959,dashed]->  FolhaPagamentoService          : "«create»"
+FolhaLoteService                -[#595959,dashed]->  Funcionario                    : "«create»"
+FolhaLoteService                -[#595959,dashed]->  FuncionarioDao                 : "«create»"
+FolhaLoteView                   -[#595959,dashed]->  FolhaLoteService               : "«create»"
+FolhaManualView                 -[#595959,dashed]->  Funcionario                    : "«create»"
+FolhaPagamento                 "1" *-[#595959,plain]-> "funcionario\n1" Funcionario                    
+FolhaPagamentoDao               -[#595959,dashed]->  Departamento                   : "«create»"
+FolhaPagamentoDao               -[#595959,dashed]->  FolhaPagamento                 : "«create»"
+FolhaPagamentoDao               -[#595959,dashed]->  Funcionario                    : "«create»"
+FolhaPagamentoService           -[#595959,dashed]->  CalcularINSS                   : "«create»"
+FolhaPagamentoService          "1" *-[#595959,plain]-> "INSS\n1" CalcularINSS                   
+FolhaPagamentoService          "1" *-[#595959,plain]-> "IRRF\n1" CalcularIR                     
+FolhaPagamentoService           -[#595959,dashed]->  CalcularIR                     : "«create»"
+FolhaPagamentoService           -[#595959,dashed]->  FolhaContexto                  : "«create»"
+FolhaPagamentoService           -[#595959,dashed]->  FolhaPagamento                 : "«create»"
+Funcionario                    "1" *-[#595959,plain]-> "departamento\n1" Departamento                   
+Funcionario                    "1" *-[#595959,plain]-> "dependentes\n*" Dependente                     
+Funcionario                     -[#000082,plain]-^  Pessoa                         
+FuncionarioDao                  -[#595959,dashed]->  Departamento                   : "«create»"
+FuncionarioDao                  -[#595959,dashed]->  DepartamentoDao                : "«create»"
+FuncionarioDao                  -[#595959,dashed]->  DependenteDao                  : "«create»"
+FuncionarioDao                  -[#595959,dashed]->  Funcionario                    : "«create»"
+FuncionarioPorDepartamentoView  -[#595959,dashed]->  FuncionarioDao                 : "«create»"
+HistoricoFolhasView             -[#595959,dashed]->  FolhaPagamentoService          : "«create»"
+HistoricoFolhasView             -[#595959,dashed]->  FuncionarioDao                 : "«create»"
+Main                            -[#595959,dashed]->  MenuView                       : "«create»"
+MenuView                        -[#595959,dashed]->  DepartamentoView               : "«create»"
+MenuView                        -[#595959,dashed]->  FolhaLoteView                  : "«create»"
+MenuView                        -[#595959,dashed]->  FolhaManualView                : "«create»"
+MenuView                        -[#595959,dashed]->  FolhaPagamentoDao              : "«create»"
+MenuView                        -[#595959,dashed]->  FolhaPagamentoService          : "«create»"
+MenuView                        -[#595959,dashed]->  FuncionarioDao                 : "«create»"
+MenuView                        -[#595959,dashed]->  FuncionarioPorDepartamentoView : "«create»"
+MenuView                        -[#595959,dashed]->  HistoricoFolhasView            : "«create»"
+ValidarCPF                      -[#595959,dashed]->  CPFInvalido                    : "«create»"
+ValidarData                     -[#595959,dashed]->  DataInvalida                   : "«create»"
+ValidarData                     -[#595959,dashed]->  FormatoDataInvalido            : "«create»"
+ValidarDepartamento             -[#595959,dashed]->  DepartamentoDao                : "«create»"
+ValidarDepartamento             -[#595959,dashed]->  DepartamentoNaoEncontrado      : "«create»"
+ValidarDependente               -[#595959,dashed]->  Dependente                     : "«create»"
+ValidarDependente               -[#595959,dashed]->  DependenteInvalido             : "«create»"
+ValidarDependente               -[#595959,dashed]->  DependenteSemTitular           : "«create»"
+ValidarNome                     -[#595959,dashed]->  NomeInvalido                   : "«create»"
+ValidarSalario                  -[#595959,dashed]->  SalarioInvalido                : "«create»"
+@enduml
