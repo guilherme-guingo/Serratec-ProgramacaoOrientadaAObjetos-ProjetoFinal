@@ -1,24 +1,44 @@
 package br.com.folhapag.views;
 
 import java.sql.Connection;
+import java.sql.SQLException;
 import java.time.LocalDate;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Scanner;
 
 import br.com.folhapag.config.Conexao;
+import br.com.folhapag.dao.DependenteDao;
+import br.com.folhapag.dao.FuncionarioDao;
 import br.com.folhapag.enums.Parentesco;
-import br.com.folhapag.exceptions.*;
+import br.com.folhapag.exceptions.CPFInvalido;
+import br.com.folhapag.exceptions.DataInvalida;
+import br.com.folhapag.exceptions.DepartamentoNaoEncontrado;
+import br.com.folhapag.exceptions.DependenteInvalido;
+import br.com.folhapag.exceptions.DependenteSemTitular;
+import br.com.folhapag.exceptions.FormatoDataInvalido;
+import br.com.folhapag.exceptions.NomeInvalido;
+import br.com.folhapag.exceptions.SalarioInvalido;
 import br.com.folhapag.model.Departamento;
 import br.com.folhapag.model.Dependente;
 import br.com.folhapag.model.FolhaPagamento;
 import br.com.folhapag.model.Funcionario;
-import br.com.folhapag.utils.*;
+import br.com.folhapag.utils.ConsoleUtils;
+import br.com.folhapag.utils.FolhaVisualizacaoUtils;
+import br.com.folhapag.utils.ValidarCPF;
+import br.com.folhapag.utils.ValidarData;
+import br.com.folhapag.utils.ValidarDepartamento;
+import br.com.folhapag.utils.ValidarDependente;
+import br.com.folhapag.utils.ValidarNome;
+import br.com.folhapag.utils.ValidarSalario;
 
 public class FolhaManualView {
 	Scanner sc = new Scanner(System.in);
-
-	public Funcionario entradaDadosManual() {
+	Connection connection = Conexao.getConexaoDB();
+	
+	
+	
+	public Funcionario entradaDadosManual(Connection conn) throws SQLException {
 		String nome = lerNome("funcionário");
 		LocalDate data = lerDataNascimento("funcionário");
 		String cpf = lerCPF("funcionário");
@@ -26,8 +46,14 @@ public class FolhaManualView {
 		Departamento departamento = lerDepartamento();
 
 		try {
+			FuncionarioDao funcDao = new FuncionarioDao(conn);
+			DependenteDao depDao = new DependenteDao(conn);
 			Funcionario funcionario = new Funcionario(nome, cpf, data, salario, departamento);
-			List<Dependente> dependentes = lerDependentes(funcionario);
+			
+			
+			funcDao.salvar(funcionario);
+			
+			List<Dependente> dependentes = lerDependentes(funcionario, depDao);
 			funcionario.setDependentes(dependentes);
 			return funcionario;
 		} catch(CPFInvalido | DataInvalida | NomeInvalido | SalarioInvalido e) {
@@ -134,14 +160,14 @@ public class FolhaManualView {
 		}
 	}
 
-	public List<Dependente> lerDependentes(Funcionario funcionario){
+	public List<Dependente> lerDependentes(Funcionario funcionario, DependenteDao depDao) throws SQLException{
 		List<Dependente> dependentes = new ArrayList<>();
 
 		try {
 			ValidarDependente.validarTitular(funcionario);
 
 			boolean querAdicionar = ConsoleUtils.perguntarSimNao(sc, "O funcionário possui dependentes?");
-
+			
 			while (querAdicionar) {
 				System.out.println("\n--- Adicionando Dependente ---");
 				String nome = lerNome("dependente");
@@ -152,6 +178,7 @@ public class FolhaManualView {
 				try {
 					Dependente novo = ValidarDependente.validarECriar(nome, cpf, data, p, funcionario);
 					dependentes.add(novo);
+					depDao.salvar(novo);
 					System.out.println("Dependente cadastrado com sucesso!\n");
 
 				} catch(DependenteInvalido e) {

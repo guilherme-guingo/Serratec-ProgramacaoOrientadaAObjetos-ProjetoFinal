@@ -57,7 +57,7 @@ public class FolhaLoteService {
 			while ((linha = leitor.readLine()) != null) {
 				numeroLinha++;
 				String[] dados = linha.split(";");
-				
+
 				try {
 
 					if (dados.length == 5) {
@@ -86,8 +86,7 @@ public class FolhaLoteService {
 				processarEscrever(folhaService, funcionario, contexto, escritor, folhaDao);
 
 			}
-			
-			System.out.println("Arquivo enviado com sucesso!");
+
 
 		} catch (IOException | SQLException e) {
 			System.err.println(e.getMessage());
@@ -98,6 +97,7 @@ public class FolhaLoteService {
 			BufferedWriter escritor, FolhaPagamentoDao folhaDao) {
 
 		FolhaPagamento folha = folhaService.folhaCalculo(funcionario, contexto);
+		
 		try {
 			folhaDao.salvar(folha);
 		} catch (SQLException e) {
@@ -105,13 +105,14 @@ public class FolhaLoteService {
 					+ " já existe ou não pôde ser salva. Ignorando exibição.");
 			return;
 		}
-
+		
 		try {
 			escritor.write(escreverCSV(folha));
 			escritor.newLine();
 		} catch (Exception e) {
 			System.out.println("Erro ao escrever no arquivo de saída.");
 		}
+		
 	}
 
 	private Funcionario verificaFuncionario(FuncionarioDao funcDao, String[] dados, DependenteDao dependenteDao,
@@ -143,10 +144,10 @@ public class FolhaLoteService {
 	private void processarDependente(String[] dados, Funcionario funcionario, List<Dependente> dependentes,
 			DependenteDao dependenteDao)
 			throws SQLException, NomeInvalido, CPFInvalido, FormatoDataInvalido, DataInvalida, DependenteInvalido {
-		
+
 		String cpfDep = dados[1];
 		boolean existe = dependentes.stream().anyMatch(d -> d.getCpf().equalsIgnoreCase(cpfDep));
-		
+
 		if (!existe) {
 
 			String nome = ValidarNome.validarNome(dados[0]);
