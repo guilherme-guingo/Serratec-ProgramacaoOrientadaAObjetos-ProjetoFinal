@@ -1,0 +1,354 @@
+<mxfile host="Electron">
+  <diagram name="Página-1" id="y0nqecoj70dzUlIym8XV">
+    <mxGraphModel dx="4031" dy="3126" grid="0" gridSize="10" guides="1" tooltips="1" connect="1" arrows="1" fold="1" page="0" pageScale="1" pageWidth="827" pageHeight="1169" math="0" shadow="0">
+      <root>
+        <mxCell id="0" />
+        <mxCell id="1" parent="0" />
+        <mxCell id="uJeLVWLu3xmzQLyKGZ_0-1" parent="1" style="swimlane;startSize=20;horizontal=1;containerType=tree;rounded=1;" value="model" vertex="1">
+          <mxGeometry height="740" width="840" x="-334" y="-238" as="geometry">
+            <mxRectangle height="30" width="70" x="500" y="20" as="alternateBounds" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="uJeLVWLu3xmzQLyKGZ_0-285" parent="uJeLVWLu3xmzQLyKGZ_0-1" style="verticalAlign=top;align=left;overflow=fill;html=1;whiteSpace=wrap;rounded=1;" value="&lt;p style=&quot;margin:0px;margin-top:4px;text-align:center;&quot;&gt;&lt;i&gt;&amp;lt;&amp;lt;abstract&amp;gt;&amp;gt;&lt;/i&gt;&lt;br&gt;&lt;b&gt;Pessoa&lt;/b&gt;&lt;/p&gt;&lt;hr size=&quot;1&quot; style=&quot;border-style:solid;&quot;&gt;&lt;p style=&quot;margin:0px;margin-left:4px;&quot;&gt;- nome: String&lt;br&gt;- cpf: String&lt;/p&gt;&lt;p style=&quot;margin:0px;margin-left:4px;&quot;&gt;- dataNascimento: LocalDate&lt;/p&gt;&lt;hr size=&quot;1&quot; style=&quot;border-style:solid;&quot;&gt;&lt;p style=&quot;margin:0px;margin-left:4px;&quot;&gt;+ getIdade(): int&lt;/p&gt;" vertex="1">
+          <mxGeometry height="130" width="190" x="348" y="30" as="geometry" />
+        </mxCell>
+        <mxCell id="uJeLVWLu3xmzQLyKGZ_0-291" edge="1" parent="uJeLVWLu3xmzQLyKGZ_0-1" source="uJeLVWLu3xmzQLyKGZ_0-290" style="edgeStyle=orthogonalEdgeStyle;rounded=1;orthogonalLoop=1;jettySize=auto;html=1;entryX=0.25;entryY=1;entryDx=0;entryDy=0;" target="uJeLVWLu3xmzQLyKGZ_0-285">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="uJeLVWLu3xmzQLyKGZ_0-292" connectable="0" parent="uJeLVWLu3xmzQLyKGZ_0-291" style="edgeLabel;html=1;align=center;verticalAlign=middle;resizable=0;points=[];rounded=1;" value="Herda" vertex="1">
+          <mxGeometry relative="1" x="0.1632" as="geometry">
+            <mxPoint as="offset" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="uJeLVWLu3xmzQLyKGZ_0-290" parent="uJeLVWLu3xmzQLyKGZ_0-1" style="verticalAlign=top;align=left;overflow=fill;html=1;whiteSpace=wrap;rounded=1;" value="&lt;p style=&quot;margin:0px;margin-top:4px;text-align:center;&quot;&gt;&lt;b&gt;Funcionario&lt;/b&gt;&lt;/p&gt;&lt;hr size=&quot;1&quot; style=&quot;border-style:solid;&quot;&gt;&lt;p style=&quot;margin:0px;margin-left:4px;&quot;&gt;- salarioBruto: double&lt;/p&gt;&lt;p style=&quot;margin:0px;margin-left:4px;&quot;&gt;- departamento: Departamento&lt;/p&gt;&lt;p style=&quot;margin:0px;margin-left:4px;&quot;&gt;- dependentes: List&amp;lt;Dependente&amp;gt;&lt;/p&gt;&lt;hr size=&quot;1&quot; style=&quot;border-style:solid;&quot;&gt;&lt;p style=&quot;margin:0px;margin-left:4px;&quot;&gt;+ setSalarioBruto(int salario): void&lt;/p&gt;&lt;p style=&quot;margin:0px;margin-left:4px;&quot;&gt;+ adicionarDependente(Dependente dependente): void&lt;/p&gt;&lt;p style=&quot;margin:0px;margin-left:4px;&quot;&gt;+ getQuantidadeDependentes(): int&lt;/p&gt;&lt;p style=&quot;margin:0px;margin-left:4px;&quot;&gt;+ getDependentes(): List&lt;/p&gt;" vertex="1">
+          <mxGeometry height="190" width="320" x="130" y="240" as="geometry" />
+        </mxCell>
+        <mxCell id="uJeLVWLu3xmzQLyKGZ_0-293" parent="uJeLVWLu3xmzQLyKGZ_0-1" style="verticalAlign=top;align=left;overflow=fill;html=1;whiteSpace=wrap;rounded=1;" value="&lt;p style=&quot;margin:0px;margin-top:4px;text-align:center;&quot;&gt;&lt;b&gt;Dependente&lt;/b&gt;&lt;/p&gt;&lt;hr size=&quot;1&quot; style=&quot;border-style:solid;&quot;&gt;&lt;p style=&quot;margin:0px;margin-left:4px;&quot;&gt;- parentesco: Parentesco&lt;/p&gt;&lt;p style=&quot;margin:0px;margin-left:4px;&quot;&gt;-cpfFuncionario: String&lt;/p&gt;&lt;hr size=&quot;1&quot; style=&quot;border-style:solid;&quot;&gt;&lt;p style=&quot;margin:0px;margin-left:4px;&quot;&gt;+ getParentesco(): Parentesco&lt;/p&gt;&lt;p style=&quot;margin:0px;margin-left:4px;&quot;&gt;+ getCpfFuncionario(): String&lt;/p&gt;" vertex="1">
+          <mxGeometry height="150" width="210" x="592" y="140" as="geometry" />
+        </mxCell>
+        <mxCell id="1eZil5OiU41Y6Tp0m1k4-2" edge="1" parent="uJeLVWLu3xmzQLyKGZ_0-1" source="uJeLVWLu3xmzQLyKGZ_0-293" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;exitX=0.5;exitY=0;exitDx=0;exitDy=0;entryX=1;entryY=0.849;entryDx=0;entryDy=0;entryPerimeter=0;" target="uJeLVWLu3xmzQLyKGZ_0-285">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="1eZil5OiU41Y6Tp0m1k4-3" connectable="0" parent="1eZil5OiU41Y6Tp0m1k4-2" style="edgeLabel;html=1;align=center;verticalAlign=middle;resizable=0;points=[];" value="Herda" vertex="1">
+          <mxGeometry relative="1" x="-0.5538" as="geometry">
+            <mxPoint as="offset" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="1eZil5OiU41Y6Tp0m1k4-4" edge="1" parent="uJeLVWLu3xmzQLyKGZ_0-1" source="uJeLVWLu3xmzQLyKGZ_0-290" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;exitX=1;exitY=0.25;exitDx=0;exitDy=0;entryX=-0.013;entryY=0.367;entryDx=0;entryDy=0;entryPerimeter=0;startArrow=diamondThin;startFill=1;endArrow=none;endFill=0;" target="uJeLVWLu3xmzQLyKGZ_0-293">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="1eZil5OiU41Y6Tp0m1k4-11" connectable="0" parent="1eZil5OiU41Y6Tp0m1k4-4" style="edgeLabel;html=1;align=center;verticalAlign=middle;resizable=0;points=[];" value="Composição" vertex="1">
+          <mxGeometry relative="1" x="-0.1593" y="-3" as="geometry">
+            <mxPoint x="1" as="offset" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="1eZil5OiU41Y6Tp0m1k4-7" parent="uJeLVWLu3xmzQLyKGZ_0-1" style="verticalAlign=top;align=left;overflow=fill;html=1;whiteSpace=wrap;rounded=1;" value="&lt;p style=&quot;margin:0px;margin-top:4px;text-align:center;&quot;&gt;&lt;b&gt;Departamento&lt;/b&gt;&lt;/p&gt;&lt;hr size=&quot;1&quot; style=&quot;border-style:solid;&quot;&gt;&lt;p style=&quot;margin:0px;margin-left:4px;&quot;&gt;- id: double&lt;/p&gt;&lt;p style=&quot;margin:0px;margin-left:4px;&quot;&gt;- nome: String&lt;/p&gt;&lt;hr size=&quot;1&quot; style=&quot;border-style: solid;&quot;&gt;&lt;p style=&quot;margin: 0px 0px 0px 4px;&quot;&gt;+ getId(): int&lt;/p&gt;&lt;p style=&quot;margin: 0px 0px 0px 4px;&quot;&gt;+ getNome(): String&lt;/p&gt;" vertex="1">
+          <mxGeometry height="110" width="240" x="160" y="585" as="geometry" />
+        </mxCell>
+        <mxCell id="1eZil5OiU41Y6Tp0m1k4-8" edge="1" parent="uJeLVWLu3xmzQLyKGZ_0-1" source="1eZil5OiU41Y6Tp0m1k4-7" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;entryX=0.461;entryY=1.024;entryDx=0;entryDy=0;entryPerimeter=0;startArrow=diamondThin;startFill=0;endArrow=none;endFill=0;" target="uJeLVWLu3xmzQLyKGZ_0-290">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="1eZil5OiU41Y6Tp0m1k4-13" connectable="0" parent="1eZil5OiU41Y6Tp0m1k4-8" style="edgeLabel;html=1;align=center;verticalAlign=middle;resizable=0;points=[];" value="Agregação" vertex="1">
+          <mxGeometry relative="1" x="0.1307" as="geometry">
+            <mxPoint as="offset" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="1eZil5OiU41Y6Tp0m1k4-10" edge="1" parent="uJeLVWLu3xmzQLyKGZ_0-1" source="1eZil5OiU41Y6Tp0m1k4-9" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;entryX=1;entryY=0.75;entryDx=0;entryDy=0;startArrow=none;startFill=0;endArrow=open;endFill=0;" target="uJeLVWLu3xmzQLyKGZ_0-290">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="1eZil5OiU41Y6Tp0m1k4-12" connectable="0" parent="1eZil5OiU41Y6Tp0m1k4-10" style="edgeLabel;html=1;align=center;verticalAlign=middle;resizable=0;points=[];" value="Associação" vertex="1">
+          <mxGeometry relative="1" x="0.076" y="-3" as="geometry">
+            <mxPoint y="-1" as="offset" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="1eZil5OiU41Y6Tp0m1k4-9" parent="uJeLVWLu3xmzQLyKGZ_0-1" style="verticalAlign=top;align=left;overflow=fill;html=1;whiteSpace=wrap;rounded=1;" value="&lt;p style=&quot;margin:0px;margin-top:4px;text-align:center;&quot;&gt;&lt;b&gt;FolhaPagamento&lt;/b&gt;&lt;/p&gt;&lt;hr size=&quot;1&quot; style=&quot;border-style:solid;&quot;&gt;&lt;p style=&quot;margin:0px;margin-left:4px;&quot;&gt;- id: int&lt;/p&gt;&lt;p style=&quot;margin:0px;margin-left:4px;&quot;&gt;- funcionario: funcionario&lt;/p&gt;&lt;p style=&quot;margin:0px;margin-left:4px;&quot;&gt;- data: LocalDate&lt;/p&gt;&lt;p style=&quot;margin:0px;margin-left:4px;&quot;&gt;- valorINSS: double&lt;/p&gt;&lt;p style=&quot;margin:0px;margin-left:4px;&quot;&gt;- valorIR: double&lt;/p&gt;&lt;p style=&quot;margin:0px;margin-left:4px;&quot;&gt;- salarioLiquido: double&lt;/p&gt;&lt;hr size=&quot;1&quot; style=&quot;border-style: solid;&quot;&gt;&lt;p style=&quot;margin: 0px 0px 0px 4px;&quot;&gt;+ getId(): int&lt;/p&gt;&lt;p style=&quot;margin: 0px 0px 0px 4px;&quot;&gt;+ getNome(): String&lt;/p&gt;" vertex="1">
+          <mxGeometry height="180" width="275" x="545" y="320" as="geometry" />
+        </mxCell>
+        <mxCell id="uJeLVWLu3xmzQLyKGZ_0-7" parent="1" style="swimlane;startSize=20;horizontal=1;containerType=tree;rounded=1;" value="enums" vertex="1">
+          <mxGeometry height="170" width="265.2" x="189" y="520" as="geometry">
+            <mxRectangle height="30" width="70" x="530" y="20" as="alternateBounds" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="1eZil5OiU41Y6Tp0m1k4-14" parent="uJeLVWLu3xmzQLyKGZ_0-7" style="verticalAlign=top;align=left;overflow=fill;html=1;whiteSpace=wrap;rounded=1;" value="&lt;p style=&quot;margin:0px;margin-top:4px;text-align:center;&quot;&gt;&lt;b&gt;Parentesco&lt;/b&gt;&lt;/p&gt;&lt;hr size=&quot;1&quot; style=&quot;border-style:solid;&quot;&gt;&lt;p style=&quot;margin:0px;margin-left:4px;&quot;&gt;- PAIS, FILHOS, CONJUGE, OUTROS&lt;/p&gt;&lt;p style=&quot;margin: 0px 0px 0px 4px;&quot;&gt;&lt;br&gt;&lt;/p&gt;" vertex="1">
+          <mxGeometry height="110" width="240" x="12.6" y="30" as="geometry" />
+        </mxCell>
+        <mxCell id="uJeLVWLu3xmzQLyKGZ_0-280" parent="1" style="swimlane;startSize=20;horizontal=1;containerType=tree;rounded=1;" value="interfaces" vertex="1">
+          <mxGeometry height="170" width="265.2" x="-513" y="520" as="geometry">
+            <mxRectangle height="30" width="70" x="530" y="20" as="alternateBounds" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="1eZil5OiU41Y6Tp0m1k4-17" parent="uJeLVWLu3xmzQLyKGZ_0-280" style="verticalAlign=top;align=left;overflow=fill;html=1;whiteSpace=wrap;rounded=1;" value="&lt;p style=&quot;margin:0px;margin-top:4px;text-align:center;&quot;&gt;&lt;i&gt;&amp;lt;&amp;lt;interface&amp;gt;&amp;gt;&lt;/i&gt;&lt;br&gt;&lt;b&gt;CalcularImposto&lt;/b&gt;&lt;/p&gt;&lt;hr size=&quot;1&quot; style=&quot;border-style:solid;&quot;&gt;&lt;p style=&quot;margin:0px;margin-left:4px;&quot;&gt;&lt;span style=&quot;background-color: transparent; color: light-dark(rgb(0, 0, 0), rgb(255, 255, 255));&quot;&gt;+ calcularImposto(): double&lt;/span&gt;&lt;/p&gt;" vertex="1">
+          <mxGeometry height="80" width="190" x="37.6" y="30" as="geometry" />
+        </mxCell>
+        <mxCell id="uJeLVWLu3xmzQLyKGZ_0-283" parent="1" style="swimlane;startSize=20;horizontal=1;containerType=tree;rounded=1;labelBackgroundColor=none;" value="exceptions" vertex="1">
+          <mxGeometry height="331" width="1108" x="-684" y="830" as="geometry">
+            <mxRectangle height="30" width="70" x="530" y="20" as="alternateBounds" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="sGgUcVB7R86ZDQ-P5l5T-2" parent="uJeLVWLu3xmzQLyKGZ_0-283" style="verticalAlign=top;align=left;overflow=fill;html=1;whiteSpace=wrap;rounded=1;" value="&lt;p style=&quot;margin:0px;margin-top:4px;text-align:center;&quot;&gt;&lt;i&gt;&amp;lt;&amp;lt;exception&amp;gt;&amp;gt;&lt;/i&gt;&lt;b&gt;&lt;/b&gt;&lt;/p&gt;&lt;p style=&quot;margin:0px;margin-top:4px;text-align:center;&quot;&gt;&lt;b&gt;CPFInvalido&lt;/b&gt;&lt;/p&gt;&lt;hr size=&quot;1&quot; style=&quot;border-style:solid;&quot;&gt;&lt;p style=&quot;margin:0px;margin-left:4px;&quot;&gt;+ CPFInvalido(string mensagem)&lt;/p&gt;" vertex="1">
+          <mxGeometry height="79" width="210" x="33" y="190" as="geometry" />
+        </mxCell>
+        <mxCell id="sGgUcVB7R86ZDQ-P5l5T-3" parent="uJeLVWLu3xmzQLyKGZ_0-283" style="verticalAlign=top;align=left;overflow=fill;html=1;whiteSpace=wrap;rounded=1;" value="&lt;p style=&quot;margin:0px;margin-top:4px;text-align:center;&quot;&gt;&lt;i&gt;&amp;lt;&amp;lt;exception&amp;gt;&amp;gt;&lt;/i&gt;&lt;b&gt;&lt;/b&gt;&lt;/p&gt;&lt;p style=&quot;margin:0px;margin-top:4px;text-align:center;&quot;&gt;&lt;b&gt;DataInvalida&lt;/b&gt;&lt;/p&gt;&lt;hr size=&quot;1&quot; style=&quot;border-style:solid;&quot;&gt;&lt;p style=&quot;margin:0px;margin-left:4px;&quot;&gt;+ DataInvalida(string mensagem)&lt;/p&gt;" vertex="1">
+          <mxGeometry height="99" width="210" x="289" y="190" as="geometry" />
+        </mxCell>
+        <mxCell id="sGgUcVB7R86ZDQ-P5l5T-4" parent="uJeLVWLu3xmzQLyKGZ_0-283" style="verticalAlign=top;align=left;overflow=fill;html=1;whiteSpace=wrap;rounded=1;" value="&lt;p style=&quot;margin:0px;margin-top:4px;text-align:center;&quot;&gt;&lt;i&gt;&amp;lt;&amp;lt;exception&amp;gt;&amp;gt;&lt;/i&gt;&lt;b&gt;&lt;/b&gt;&lt;/p&gt;&lt;p style=&quot;margin:0px;margin-top:4px;text-align:center;&quot;&gt;&lt;b&gt;SalarioInvalido&lt;/b&gt;&lt;/p&gt;&lt;hr size=&quot;1&quot; style=&quot;border-style:solid;&quot;&gt;&lt;p style=&quot;margin:0px;margin-left:4px;&quot;&gt;+ SalarioInvalido(string mensagem)&lt;/p&gt;" vertex="1">
+          <mxGeometry height="104" width="210" x="579.2" y="188" as="geometry" />
+        </mxCell>
+        <mxCell id="sGgUcVB7R86ZDQ-P5l5T-5" parent="uJeLVWLu3xmzQLyKGZ_0-283" style="verticalAlign=top;align=left;overflow=fill;html=1;whiteSpace=wrap;rounded=1;" value="&lt;p style=&quot;margin:0px;margin-top:4px;text-align:center;&quot;&gt;&lt;i&gt;&amp;lt;&amp;lt;exception&amp;gt;&amp;gt;&lt;/i&gt;&lt;b&gt;&lt;/b&gt;&lt;/p&gt;&lt;p style=&quot;margin:0px;margin-top:4px;text-align:center;&quot;&gt;&lt;b&gt;DependenteSemTitular&lt;/b&gt;&lt;/p&gt;&lt;hr size=&quot;1&quot; style=&quot;border-style:solid;&quot;&gt;&lt;p style=&quot;margin:0px;margin-left:4px;&quot;&gt;+ DependenteSemTitular(string mensagem): type&lt;/p&gt;" vertex="1">
+          <mxGeometry height="89" width="210" x="869.2" y="190" as="geometry" />
+        </mxCell>
+        <mxCell id="sGgUcVB7R86ZDQ-P5l5T-6" parent="uJeLVWLu3xmzQLyKGZ_0-283" style="verticalAlign=top;align=left;overflow=fill;html=1;whiteSpace=wrap;rounded=1;" value="&lt;p style=&quot;margin:0px;margin-top:4px;text-align:center;&quot;&gt;&lt;i&gt;&amp;lt;&amp;lt;exception&amp;gt;&amp;gt;&lt;/i&gt;&lt;b&gt;&lt;/b&gt;&lt;/p&gt;&lt;p style=&quot;margin:0px;margin-top:4px;text-align:center;&quot;&gt;&lt;b&gt;NomeInvalido&lt;/b&gt;&lt;/p&gt;&lt;hr size=&quot;1&quot; style=&quot;border-style:solid;&quot;&gt;&lt;p style=&quot;margin:0px;margin-left:4px;&quot;&gt;+ NomeInvalido(string mensagem)&lt;/p&gt;" vertex="1">
+          <mxGeometry height="89" width="210" x="33" y="67" as="geometry" />
+        </mxCell>
+        <mxCell id="3Q9Ldrdf9HsnMvp5bxsS-11" parent="uJeLVWLu3xmzQLyKGZ_0-283" style="verticalAlign=top;align=left;overflow=fill;html=1;whiteSpace=wrap;rounded=1;" value="&lt;p style=&quot;margin:0px;margin-top:4px;text-align:center;&quot;&gt;&lt;i&gt;&amp;lt;&amp;lt;exception&amp;gt;&amp;gt;&lt;/i&gt;&lt;b&gt;&lt;/b&gt;&lt;/p&gt;&lt;p style=&quot;margin:0px;margin-top:4px;text-align:center;&quot;&gt;&lt;b&gt;DepartamentoNaoEncontrado&lt;/b&gt;&lt;/p&gt;&lt;hr size=&quot;1&quot; style=&quot;border-style:solid;&quot;&gt;&lt;p style=&quot;margin:0px;margin-left:4px;&quot;&gt;+&amp;nbsp;&lt;b style=&quot;text-align: center;&quot;&gt;DepartamentoNaoEncontrado&lt;/b&gt;(string mensagem)&lt;/p&gt;" vertex="1">
+          <mxGeometry height="89" width="242.4" x="275" y="67" as="geometry" />
+        </mxCell>
+        <mxCell id="3Q9Ldrdf9HsnMvp5bxsS-12" parent="uJeLVWLu3xmzQLyKGZ_0-283" style="verticalAlign=top;align=left;overflow=fill;html=1;whiteSpace=wrap;rounded=1;" value="&lt;p style=&quot;margin:0px;margin-top:4px;text-align:center;&quot;&gt;&lt;i&gt;&amp;lt;&amp;lt;exception&amp;gt;&amp;gt;&lt;/i&gt;&lt;b&gt;&lt;/b&gt;&lt;/p&gt;&lt;p style=&quot;margin:0px;margin-top:4px;text-align:center;&quot;&gt;&lt;b&gt;DependenteInvalido&lt;/b&gt;&lt;/p&gt;&lt;hr size=&quot;1&quot; style=&quot;border-style:solid;&quot;&gt;&lt;p style=&quot;margin:0px;margin-left:4px;&quot;&gt;+&amp;nbsp;&lt;b style=&quot;text-align: center;&quot;&gt;DependenteInvalido&lt;/b&gt;(string mensagem)&lt;/p&gt;" vertex="1">
+          <mxGeometry height="89" width="242.4" x="563" y="67" as="geometry" />
+        </mxCell>
+        <mxCell id="3Q9Ldrdf9HsnMvp5bxsS-13" parent="uJeLVWLu3xmzQLyKGZ_0-283" style="verticalAlign=top;align=left;overflow=fill;html=1;whiteSpace=wrap;rounded=1;" value="&lt;p style=&quot;margin:0px;margin-top:4px;text-align:center;&quot;&gt;&lt;i&gt;&amp;lt;&amp;lt;exception&amp;gt;&amp;gt;&lt;/i&gt;&lt;b&gt;&lt;/b&gt;&lt;/p&gt;&lt;p style=&quot;margin:0px;margin-top:4px;text-align:center;&quot;&gt;&lt;b&gt;FormatoDataInvalido&lt;/b&gt;&lt;/p&gt;&lt;hr size=&quot;1&quot; style=&quot;border-style:solid;&quot;&gt;&lt;p style=&quot;margin:0px;margin-left:4px;&quot;&gt;+&amp;nbsp;&lt;b style=&quot;text-align: center;&quot;&gt;FormatoDataInvalido&lt;/b&gt;(string mensagem)&lt;/p&gt;" vertex="1">
+          <mxGeometry height="89" width="242.4" x="853" y="67" as="geometry" />
+        </mxCell>
+        <mxCell id="1eZil5OiU41Y6Tp0m1k4-18" parent="1" style="swimlane;startSize=20;horizontal=1;containerType=tree;rounded=1;labelBackgroundColor=none;" value="utils" vertex="1">
+          <mxGeometry height="610" width="600" x="-997" y="-173" as="geometry">
+            <mxRectangle height="30" width="70" x="530" y="20" as="alternateBounds" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="1eZil5OiU41Y6Tp0m1k4-19" parent="1eZil5OiU41Y6Tp0m1k4-18" style="verticalAlign=top;align=left;overflow=fill;html=1;whiteSpace=wrap;rounded=1;" value="&lt;p style=&quot;margin:0px;margin-top:4px;text-align:center;&quot;&gt;&lt;b&gt;ConsoleUtils&lt;/b&gt;&lt;/p&gt;&lt;hr size=&quot;1&quot; style=&quot;border-style:solid;&quot;&gt;&lt;p style=&quot;margin:0px;margin-left:4px;&quot;&gt;+ perguntarSimNao(Scanner, String) : boolean&lt;/p&gt;" vertex="1">
+          <mxGeometry height="69" width="260" x="5" y="209" as="geometry" />
+        </mxCell>
+        <mxCell id="1eZil5OiU41Y6Tp0m1k4-22" parent="1eZil5OiU41Y6Tp0m1k4-18" style="verticalAlign=top;align=left;overflow=fill;html=1;whiteSpace=wrap;rounded=1;" value="&lt;p style=&quot;margin:0px;margin-top:4px;text-align:center;&quot;&gt;&lt;b&gt;ValidarDependente&lt;/b&gt;&lt;/p&gt;&lt;hr size=&quot;1&quot; style=&quot;border-style:solid;&quot;&gt;&lt;p style=&quot;margin:0px;margin-left:4px;&quot;&gt;+ validarTitular(Funcionario titular) : Funcionario&lt;/p&gt;&lt;p style=&quot;margin:0px;margin-left:4px;&quot;&gt;+ validarECriar(String nome, String cpf, LocalDate data, Parentesco p, Funcionario titular) : Dependente&lt;/p&gt;" vertex="1">
+          <mxGeometry height="80" width="580" x="10" y="500" as="geometry" />
+        </mxCell>
+        <mxCell id="1eZil5OiU41Y6Tp0m1k4-23" parent="1eZil5OiU41Y6Tp0m1k4-18" style="verticalAlign=top;align=left;overflow=fill;html=1;whiteSpace=wrap;rounded=1;" value="&lt;p style=&quot;margin:0px;margin-top:4px;text-align:center;&quot;&gt;&lt;b&gt;ValidarNome&lt;/b&gt;&lt;/p&gt;&lt;hr size=&quot;1&quot; style=&quot;border-style:solid;&quot;&gt;&lt;p style=&quot;margin:0px;margin-left:4px;&quot;&gt;+ validarNome(String Nome): String&lt;/p&gt;" vertex="1">
+          <mxGeometry height="69" width="210" x="10" y="31" as="geometry" />
+        </mxCell>
+        <mxCell id="1eZil5OiU41Y6Tp0m1k4-24" parent="1eZil5OiU41Y6Tp0m1k4-18" style="verticalAlign=top;align=left;overflow=fill;html=1;whiteSpace=wrap;rounded=1;" value="&lt;p style=&quot;margin:0px;margin-top:4px;text-align:center;&quot;&gt;&lt;b&gt;ValidarSalario&lt;/b&gt;&lt;/p&gt;&lt;hr size=&quot;1&quot; style=&quot;border-style:solid;&quot;&gt;&lt;p style=&quot;margin:0px;margin-left:4px;&quot;&gt;+ validar(String salarioTexto) : double&lt;/p&gt;&lt;p style=&quot;margin:0px;margin-left:4px;&quot;&gt;+ validar(double salarioBruto) : double&lt;/p&gt;" vertex="1">
+          <mxGeometry height="80" width="250" x="340" y="130" as="geometry" />
+        </mxCell>
+        <mxCell id="3Q9Ldrdf9HsnMvp5bxsS-14" parent="1eZil5OiU41Y6Tp0m1k4-18" style="verticalAlign=top;align=left;overflow=fill;html=1;whiteSpace=wrap;rounded=1;" value="&lt;p style=&quot;margin:0px;margin-top:4px;text-align:center;&quot;&gt;&lt;b&gt;FolhaVisualizacaoUtils&lt;/b&gt;&lt;/p&gt;&lt;hr size=&quot;1&quot; style=&quot;border-style:solid;&quot;&gt;&lt;p style=&quot;margin:0px;margin-left:4px;&quot;&gt;+ exibirRelatorio(FolhaPagamento folha) : void&lt;/p&gt;" vertex="1">
+          <mxGeometry height="69" width="270" x="5" y="120" as="geometry" />
+        </mxCell>
+        <mxCell id="3Q9Ldrdf9HsnMvp5bxsS-15" parent="1eZil5OiU41Y6Tp0m1k4-18" style="verticalAlign=top;align=left;overflow=fill;html=1;whiteSpace=wrap;rounded=1;" value="&lt;p style=&quot;margin:0px;margin-top:4px;text-align:center;&quot;&gt;&lt;b&gt;ValidarCPF&lt;/b&gt;&lt;/p&gt;&lt;hr size=&quot;1&quot; style=&quot;border-style:solid;&quot;&gt;&lt;p style=&quot;margin:0px;margin-left:4px;&quot;&gt;+ validarCPF(string CPF): String&lt;/p&gt;" vertex="1">
+          <mxGeometry height="69" width="210" x="360" y="290" as="geometry" />
+        </mxCell>
+        <mxCell id="3Q9Ldrdf9HsnMvp5bxsS-16" parent="1eZil5OiU41Y6Tp0m1k4-18" style="verticalAlign=top;align=left;overflow=fill;html=1;whiteSpace=wrap;rounded=1;" value="&lt;p style=&quot;margin:0px;margin-top:4px;text-align:center;&quot;&gt;&lt;b&gt;ValidarData&lt;/b&gt;&lt;/p&gt;&lt;hr size=&quot;1&quot; style=&quot;border-style:solid;&quot;&gt;&lt;p style=&quot;margin:0px;margin-left:4px;&quot;&gt;+ validar(String dataTexto) : LocalDate&lt;/p&gt;&lt;p style=&quot;margin:0px;margin-left:4px;&quot;&gt;+ validar (LocalDate data) : LocalDate&lt;/p&gt;" vertex="1">
+          <mxGeometry height="81" width="290" x="10" y="309" as="geometry" />
+        </mxCell>
+        <mxCell id="3Q9Ldrdf9HsnMvp5bxsS-18" parent="1eZil5OiU41Y6Tp0m1k4-18" style="verticalAlign=top;align=left;overflow=fill;html=1;whiteSpace=wrap;rounded=1;" value="&lt;p style=&quot;margin:0px;margin-top:4px;text-align:center;&quot;&gt;&lt;b&gt;ValidarDepartamento&lt;/b&gt;&lt;/p&gt;&lt;hr size=&quot;1&quot; style=&quot;border-style:solid;&quot;&gt;&lt;p style=&quot;margin:0px;margin-left:4px;&quot;&gt;+ validar(String entrada, Connection conn) : Departamento&lt;/p&gt;&lt;p style=&quot;margin:0px;margin-left:4px;&quot;&gt;&lt;br&gt;&lt;/p&gt;" vertex="1">
+          <mxGeometry height="60" width="320" x="10" y="420" as="geometry" />
+        </mxCell>
+        <mxCell id="urjcz5ThKflZJynyD9Vp-1" parent="1" style="swimlane;startSize=20;horizontal=1;containerType=tree;rounded=1;labelBackgroundColor=none;" value="contexts" vertex="1">
+          <mxGeometry height="190" width="365" x="-899" y="520" as="geometry">
+            <mxRectangle height="30" width="70" x="530" y="20" as="alternateBounds" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="urjcz5ThKflZJynyD9Vp-2" parent="urjcz5ThKflZJynyD9Vp-1" style="verticalAlign=top;align=left;overflow=fill;html=1;whiteSpace=wrap;rounded=1;" value="&lt;p style=&quot;margin:0px;margin-top:4px;text-align:center;&quot;&gt;&lt;b&gt;FolhaContexto&lt;/b&gt;&lt;/p&gt;&lt;hr size=&quot;1&quot; style=&quot;border-style:solid;&quot;&gt;&lt;p style=&quot;margin:0px;margin-left:4px;&quot;&gt;&lt;span style=&quot;background-color: transparent; color: light-dark(rgb(0, 0, 0), rgb(255, 255, 255));&quot;&gt;- funcionario: Funcionario&lt;/span&gt;&lt;/p&gt;&lt;p style=&quot;margin:0px;margin-left:4px;&quot;&gt;- valorINSS: double&lt;/p&gt;&lt;p style=&quot;margin:0px;margin-left:4px;&quot;&gt;- valorIRRF: double&lt;/p&gt;&lt;hr size=&quot;1&quot; style=&quot;border-style: solid;&quot;&gt;&lt;p style=&quot;margin: 0px 0px 0px 4px;&quot;&gt;+ getters/setters()&lt;/p&gt;" vertex="1">
+          <mxGeometry height="119" width="275" x="45" y="40" as="geometry" />
+        </mxCell>
+        <mxCell id="3Q9Ldrdf9HsnMvp5bxsS-1" parent="1" style="swimlane;startSize=20;horizontal=1;containerType=tree;rounded=1;" value="config" vertex="1">
+          <mxGeometry height="256" width="395" x="-232" y="520" as="geometry">
+            <mxRectangle height="30" width="70" x="530" y="20" as="alternateBounds" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="3Q9Ldrdf9HsnMvp5bxsS-2" parent="3Q9Ldrdf9HsnMvp5bxsS-1" style="verticalAlign=top;align=left;overflow=fill;html=1;whiteSpace=wrap;rounded=1;" value="&lt;p style=&quot;margin:0px;margin-top:4px;text-align:center;&quot;&gt;&lt;b&gt;Conexao&lt;/b&gt;&lt;/p&gt;&lt;hr size=&quot;1&quot; style=&quot;border-style:solid;&quot;&gt;&lt;p style=&quot;margin:0px;margin-left:4px;&quot;&gt;- URL: String&lt;/p&gt;&lt;p style=&quot;margin:0px;margin-left:4px;&quot;&gt;- USER: String&lt;/p&gt;&lt;p style=&quot;margin:0px;margin-left:4px;&quot;&gt;- PASS: String&lt;/p&gt;&lt;hr size=&quot;1&quot; style=&quot;border-style: solid;&quot;&gt;&lt;p style=&quot;margin: 0px 0px 0px 4px;&quot;&gt;+ getConexaoDB() : Connection&lt;/p&gt;" vertex="1">
+          <mxGeometry height="120" width="275" x="69.99999999999997" y="36" as="geometry" />
+        </mxCell>
+        <mxCell id="3Q9Ldrdf9HsnMvp5bxsS-6" parent="3Q9Ldrdf9HsnMvp5bxsS-1" style="verticalAlign=top;align=left;overflow=fill;html=1;whiteSpace=wrap;rounded=1;" value="&lt;p style=&quot;margin:0px;margin-top:4px;text-align:center;&quot;&gt;&lt;b&gt;SetupBanco&lt;/b&gt;&lt;/p&gt;&lt;hr size=&quot;1&quot; style=&quot;border-style:solid;&quot;&gt;&lt;p style=&quot;margin:0px;margin-left:4px;&quot;&gt;&lt;/p&gt;&lt;p style=&quot;margin: 0px 0px 0px 4px;&quot;&gt;+ inicializarTabelas() : void&lt;/p&gt;" vertex="1">
+          <mxGeometry height="64" width="275" x="70" y="176" as="geometry" />
+        </mxCell>
+        <mxCell id="uJeLVWLu3xmzQLyKGZ_0-281" parent="1" style="swimlane;startSize=20;horizontal=1;containerType=tree;rounded=1;" value="dao" vertex="1">
+          <mxGeometry height="510" width="354" x="801" y="-162" as="geometry">
+            <mxRectangle height="30" width="70" x="530" y="20" as="alternateBounds" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="3Q9Ldrdf9HsnMvp5bxsS-7" parent="uJeLVWLu3xmzQLyKGZ_0-281" style="verticalAlign=top;align=left;overflow=fill;html=1;whiteSpace=wrap;rounded=1;" value="&lt;p style=&quot;margin:0px;margin-top:4px;text-align:center;&quot;&gt;&lt;b&gt;DepartamentoDao&lt;/b&gt;&lt;/p&gt;&lt;hr size=&quot;1&quot; style=&quot;border-style:solid;&quot;&gt;&lt;p style=&quot;margin:0px;margin-left:4px;&quot;&gt;- conn: Connection&lt;/p&gt;&lt;hr size=&quot;1&quot; style=&quot;border-style: solid;&quot;&gt;&lt;p style=&quot;margin: 0px 0px 0px 4px;&quot;&gt;+ listarTodos() : List&amp;lt;Departamento&amp;gt;&lt;/p&gt;&lt;p style=&quot;margin: 0px 0px 0px 4px;&quot;&gt;+ buscarIdPorNome() : int&lt;/p&gt;&lt;p style=&quot;margin: 0px 0px 0px 4px;&quot;&gt;+ buscarPorId: Departamento&lt;/p&gt;" vertex="1">
+          <mxGeometry height="120" width="275" x="32.5" y="380" as="geometry" />
+        </mxCell>
+        <mxCell id="3Q9Ldrdf9HsnMvp5bxsS-8" parent="uJeLVWLu3xmzQLyKGZ_0-281" style="verticalAlign=top;align=left;overflow=fill;html=1;whiteSpace=wrap;rounded=1;" value="&lt;p style=&quot;margin:0px;margin-top:4px;text-align:center;&quot;&gt;&lt;b&gt;DependenteDao&lt;/b&gt;&lt;/p&gt;&lt;hr size=&quot;1&quot; style=&quot;border-style:solid;&quot;&gt;&lt;p style=&quot;margin:0px;margin-left:4px;&quot;&gt;- conn: Connection&lt;/p&gt;&lt;hr size=&quot;1&quot; style=&quot;border-style: solid;&quot;&gt;&lt;p style=&quot;margin: 0px 0px 0px 4px;&quot;&gt;+ salvar() : void&lt;/p&gt;&lt;p style=&quot;margin: 0px 0px 0px 4px;&quot;&gt;+ buscarPorFuncionario() : List&amp;lt;Dependente&amp;gt;&lt;/p&gt;" vertex="1">
+          <mxGeometry height="96" width="275" x="32.5" y="30" as="geometry" />
+        </mxCell>
+        <mxCell id="3Q9Ldrdf9HsnMvp5bxsS-9" parent="uJeLVWLu3xmzQLyKGZ_0-281" style="verticalAlign=top;align=left;overflow=fill;html=1;whiteSpace=wrap;rounded=1;" value="&lt;p style=&quot;margin:0px;margin-top:4px;text-align:center;&quot;&gt;&lt;b&gt;FolhaPagamentoDao&lt;/b&gt;&lt;/p&gt;&lt;hr size=&quot;1&quot; style=&quot;border-style:solid;&quot;&gt;&lt;p style=&quot;margin:0px;margin-left:4px;&quot;&gt;- conn: Connection&lt;/p&gt;&lt;hr size=&quot;1&quot; style=&quot;border-style: solid;&quot;&gt;&lt;p style=&quot;margin: 0px 0px 0px 4px;&quot;&gt;+ salvar() : void&lt;/p&gt;&lt;p style=&quot;margin: 0px 0px 0px 4px;&quot;&gt;+ listarTodos() : List&amp;lt;FolhaPagamento&amp;gt;&lt;/p&gt;" vertex="1">
+          <mxGeometry height="100" width="275" x="32.5" y="140" as="geometry" />
+        </mxCell>
+        <mxCell id="3Q9Ldrdf9HsnMvp5bxsS-10" parent="uJeLVWLu3xmzQLyKGZ_0-281" style="verticalAlign=top;align=left;overflow=fill;html=1;whiteSpace=wrap;rounded=1;" value="&lt;p style=&quot;margin:0px;margin-top:4px;text-align:center;&quot;&gt;&lt;b&gt;FuncionarioDao&lt;/b&gt;&lt;/p&gt;&lt;hr size=&quot;1&quot; style=&quot;border-style:solid;&quot;&gt;&lt;p style=&quot;margin:0px;margin-left:4px;&quot;&gt;- conn: Connection&lt;/p&gt;&lt;hr size=&quot;1&quot; style=&quot;border-style: solid;&quot;&gt;&lt;p style=&quot;margin: 0px 0px 0px 4px;&quot;&gt;+ salvar(): void&lt;/p&gt;&lt;p style=&quot;margin: 0px 0px 0px 4px;&quot;&gt;+ existeCpf() : boolean&lt;/p&gt;&lt;p style=&quot;margin: 0px 0px 0px 4px;&quot;&gt;+ buscarPorCpf: Funcionario&lt;/p&gt;&lt;p style=&quot;margin: 0px 0px 0px 4px;&quot;&gt;+ listarTodosComDependentes() : List&amp;lt;Funcionario&amp;gt;&lt;/p&gt;" vertex="1">
+          <mxGeometry height="120" width="302.5" x="18.75" y="250" as="geometry" />
+        </mxCell>
+        <mxCell id="3Q9Ldrdf9HsnMvp5bxsS-20" parent="1" style="swimlane;startSize=20;horizontal=1;containerType=tree;rounded=1;labelBackgroundColor=none;" value="views" vertex="1">
+          <mxGeometry height="563" width="752" x="517" y="598" as="geometry">
+            <mxRectangle height="30" width="70" x="530" y="20" as="alternateBounds" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="3Q9Ldrdf9HsnMvp5bxsS-21" parent="3Q9Ldrdf9HsnMvp5bxsS-20" style="verticalAlign=top;align=left;overflow=fill;html=1;whiteSpace=wrap;rounded=1;" value="&lt;p style=&quot;margin:0px;margin-top:4px;text-align:center;&quot;&gt;&lt;b&gt;FolhaLoteView&lt;/b&gt;&lt;/p&gt;&lt;hr size=&quot;1&quot; style=&quot;border-style:solid;&quot;&gt;&lt;p style=&quot;margin: 0px 0px 0px 4px;&quot;&gt;+ entradaLote(Scanner sc) : void&lt;/p&gt;" vertex="1">
+          <mxGeometry height="60" width="275" x="10" y="30" as="geometry" />
+        </mxCell>
+        <mxCell id="3Q9Ldrdf9HsnMvp5bxsS-22" parent="3Q9Ldrdf9HsnMvp5bxsS-20" style="verticalAlign=top;align=left;overflow=fill;html=1;whiteSpace=wrap;rounded=1;" value="&lt;p style=&quot;margin:0px;margin-top:4px;text-align:center;&quot;&gt;&lt;b&gt;FolhaManualView&lt;/b&gt;&lt;/p&gt;&lt;hr size=&quot;1&quot; style=&quot;border-style:solid;&quot;&gt;&lt;p style=&quot;margin:0px;margin-left:4px;&quot;&gt;&lt;span style=&quot;background-color: transparent; color: light-dark(rgb(0, 0, 0), rgb(255, 255, 255));&quot;&gt;- sc: Scanner&lt;/span&gt;&lt;/p&gt;&lt;p style=&quot;margin:0px;margin-left:4px;&quot;&gt;- conn: Connection&lt;/p&gt;&lt;hr size=&quot;1&quot; style=&quot;border-style: solid;&quot;&gt;&lt;p style=&quot;margin: 0px 0px 0px 4px;&quot;&gt;+ entradaDadosManual() : Funcionario&lt;/p&gt;&lt;p style=&quot;margin: 0px 0px 0px 4px;&quot;&gt;+ exibirDadosFolha() : void&lt;/p&gt;&lt;p style=&quot;margin: 0px 0px 0px 4px;&quot;&gt;+ lerNome() : String&lt;/p&gt;&lt;p style=&quot;margin: 0px 0px 0px 4px;&quot;&gt;+ lerDataNascimento() : localDate&lt;/p&gt;&lt;p style=&quot;margin: 0px 0px 0px 4px;&quot;&gt;+ lerCPF() : String&lt;/p&gt;&lt;p style=&quot;margin: 0px 0px 0px 4px;&quot;&gt;+ lerSalario : double&lt;/p&gt;&lt;p style=&quot;margin: 0px 0px 0px 4px;&quot;&gt;+ lerDepartamento : Departamento&lt;/p&gt;&lt;p style=&quot;margin: 0px 0px 0px 4px;&quot;&gt;+ lerParentesco : Parentesco&lt;/p&gt;&lt;p style=&quot;margin: 0px 0px 0px 4px;&quot;&gt;+ lerdependentes : List&amp;lt;Dependente&amp;gt;&lt;/p&gt;&lt;p style=&quot;margin: 0px 0px 0px 4px;&quot;&gt;&lt;br&gt;&lt;/p&gt;" vertex="1">
+          <mxGeometry height="230" width="275" x="303" y="305" as="geometry" />
+        </mxCell>
+        <mxCell id="3Q9Ldrdf9HsnMvp5bxsS-23" parent="3Q9Ldrdf9HsnMvp5bxsS-20" style="verticalAlign=top;align=left;overflow=fill;html=1;whiteSpace=wrap;rounded=1;" value="&lt;p style=&quot;margin:0px;margin-top:4px;text-align:center;&quot;&gt;&lt;b&gt;FuncionarioPorDepartamentoView&lt;/b&gt;&lt;/p&gt;&lt;hr size=&quot;1&quot; style=&quot;border-style:solid;&quot;&gt;&lt;p style=&quot;margin: 0px 0px 0px 4px;&quot;&gt;+ exibir(Scanner sc, Connection conn) : void&lt;/p&gt;&lt;p style=&quot;margin: 0px 0px 0px 4px;&quot;&gt;&lt;br&gt;&lt;/p&gt;&lt;p style=&quot;margin: 0px 0px 0px 4px;&quot;&gt;&lt;br&gt;&lt;/p&gt;" vertex="1">
+          <mxGeometry height="60" width="275" x="10" y="170" as="geometry" />
+        </mxCell>
+        <mxCell id="3Q9Ldrdf9HsnMvp5bxsS-24" parent="3Q9Ldrdf9HsnMvp5bxsS-20" style="verticalAlign=top;align=left;overflow=fill;html=1;whiteSpace=wrap;rounded=1;" value="&lt;p style=&quot;margin:0px;margin-top:4px;text-align:center;&quot;&gt;&lt;b&gt;DepartamentoView&lt;/b&gt;&lt;/p&gt;&lt;hr size=&quot;1&quot; style=&quot;border-style:solid;&quot;&gt;&lt;p style=&quot;margin: 0px 0px 0px 4px;&quot;&gt;+ listar(Connection conn) : void&lt;/p&gt;" vertex="1">
+          <mxGeometry height="59" width="275" x="10" y="100" as="geometry" />
+        </mxCell>
+        <mxCell id="3Q9Ldrdf9HsnMvp5bxsS-25" parent="3Q9Ldrdf9HsnMvp5bxsS-20" style="verticalAlign=top;align=left;overflow=fill;html=1;whiteSpace=wrap;rounded=1;" value="&lt;p style=&quot;margin:0px;margin-top:4px;text-align:center;&quot;&gt;&lt;b&gt;HistoricoFolhasView&lt;/b&gt;&lt;/p&gt;&lt;hr size=&quot;1&quot; style=&quot;border-style:solid;&quot;&gt;&lt;p style=&quot;margin:0px;margin-left:4px;&quot;&gt;&lt;span style=&quot;background-color: transparent; color: light-dark(rgb(0, 0, 0), rgb(255, 255, 255));&quot;&gt;- funcDao : FuncionarioDao&lt;/span&gt;&lt;/p&gt;&lt;p style=&quot;margin:0px;margin-left:4px;&quot;&gt;- service :&amp;nbsp;folhaPagamentoService&lt;/p&gt;&lt;hr size=&quot;1&quot; style=&quot;border-style: solid;&quot;&gt;&lt;p style=&quot;margin: 0px 0px 0px 4px;&quot;&gt;+ Exibir(Connection conn) : void&lt;/p&gt;&lt;p style=&quot;margin: 0px 0px 0px 4px;&quot;&gt;&lt;br&gt;&lt;/p&gt;" vertex="1">
+          <mxGeometry height="100" width="275" x="10" y="240" as="geometry" />
+        </mxCell>
+        <mxCell id="3Q9Ldrdf9HsnMvp5bxsS-26" parent="3Q9Ldrdf9HsnMvp5bxsS-20" style="verticalAlign=top;align=left;overflow=fill;html=1;whiteSpace=wrap;rounded=1;" value="&lt;p style=&quot;margin:0px;margin-top:4px;text-align:center;&quot;&gt;&lt;b&gt;MenuView&lt;/b&gt;&lt;/p&gt;&lt;hr size=&quot;1&quot; style=&quot;border-style:solid;&quot;&gt;&lt;p style=&quot;margin:0px;margin-left:4px;&quot;&gt;&lt;span style=&quot;background-color: transparent; color: light-dark(rgb(0, 0, 0), rgb(255, 255, 255));&quot;&gt;- funcDao : FuncionarioDao&lt;/span&gt;&lt;/p&gt;&lt;p style=&quot;margin:0px;margin-left:4px;&quot;&gt;- service :&amp;nbsp;folhaPagamentoService&lt;/p&gt;&lt;hr size=&quot;1&quot; style=&quot;border-style: solid;&quot;&gt;&lt;p style=&quot;margin: 0px 0px 0px 4px;&quot;&gt;+ executarMenu() : void&lt;/p&gt;&lt;p style=&quot;margin: 0px 0px 0px 4px;&quot;&gt;+ exibirMenu() : void&lt;/p&gt;&lt;p style=&quot;margin: 0px 0px 0px 4px;&quot;&gt;+ lerOpcaoMenu() : Scanner&lt;/p&gt;&lt;p style=&quot;margin: 0px 0px 0px 4px;&quot;&gt;+ processarFimDeFluxo() : Scanner&lt;/p&gt;&lt;p style=&quot;margin: 0px 0px 0px 4px;&quot;&gt;&lt;br&gt;&lt;/p&gt;" vertex="1">
+          <mxGeometry height="150" width="275" x="316.5" y="54.5" as="geometry" />
+        </mxCell>
+        <mxCell id="3Q9Ldrdf9HsnMvp5bxsS-27" parent="1" style="swimlane;startSize=20;horizontal=1;containerType=tree;rounded=1;" value="service" vertex="1">
+          <mxGeometry height="861" width="666" x="318" y="-1127" as="geometry">
+            <mxRectangle height="30" width="70" x="530" y="20" as="alternateBounds" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="3Q9Ldrdf9HsnMvp5bxsS-28" parent="3Q9Ldrdf9HsnMvp5bxsS-27" style="verticalAlign=top;align=left;overflow=fill;html=1;whiteSpace=wrap;rounded=1;" value="&lt;p style=&quot;margin:0px;margin-top:4px;text-align:center;&quot;&gt;&lt;b&gt;CalcularIR&lt;/b&gt;&lt;/p&gt;&lt;hr size=&quot;1&quot; style=&quot;border-style:solid;&quot;&gt;&lt;p style=&quot;margin:0px;margin-left:4px;&quot;&gt;- DEDUCAO_DEPENDENTE: double&lt;/p&gt;&lt;hr size=&quot;1&quot; style=&quot;border-style: solid;&quot;&gt;&lt;p style=&quot;margin: 0px 0px 0px 4px;&quot;&gt;+ CalcularIR()&lt;br&gt;+ calcularImposto(contexto: FolhaContexto): void&lt;br&gt;- calcAliquota(base: double): double&lt;br&gt;- calcParcela(base: double): double&lt;/p&gt;" vertex="1">
+          <mxGeometry height="120" width="275" x="22.5" y="222" as="geometry" />
+        </mxCell>
+        <mxCell id="3Q9Ldrdf9HsnMvp5bxsS-29" parent="3Q9Ldrdf9HsnMvp5bxsS-27" style="verticalAlign=top;align=left;overflow=fill;html=1;whiteSpace=wrap;rounded=1;" value="&lt;p style=&quot;margin:0px;margin-top:4px;text-align:center;&quot;&gt;&lt;b&gt;CalcularINSS&lt;/b&gt;&lt;/p&gt;&lt;hr size=&quot;1&quot; style=&quot;border-style:solid;&quot;&gt;&lt;p style=&quot;margin:0px;margin-left:4px;&quot;&gt;- TETO_INSS_RETIDO: double&lt;br&gt;&lt;/p&gt;&lt;hr size=&quot;1&quot; style=&quot;border-style: solid;&quot;&gt;&lt;p style=&quot;margin: 0px 0px 0px 4px;&quot;&gt;+ CalcularINSS()&lt;br&gt;+ calcularImposto(contexto: FolhaContexto): void&lt;br&gt;- calcAliquota(contexto: FolhaContexto): double&lt;br&gt;- calcParcela(contexto: FolhaContexto): double&lt;/p&gt;" vertex="1">
+          <mxGeometry height="130" width="290" x="22.5" y="40" as="geometry" />
+        </mxCell>
+        <mxCell id="3Q9Ldrdf9HsnMvp5bxsS-30" parent="3Q9Ldrdf9HsnMvp5bxsS-27" style="verticalAlign=top;align=left;overflow=fill;html=1;whiteSpace=wrap;rounded=1;" value="&lt;p style=&quot;margin:0px;margin-top:4px;text-align:center;&quot;&gt;&lt;b&gt;FolhaLoteService&lt;/b&gt;&lt;/p&gt;&lt;hr size=&quot;1&quot; style=&quot;border-style:solid;&quot;&gt;&lt;p style=&quot;margin:0px;margin-left:4px;&quot;&gt;&lt;/p&gt;&lt;p style=&quot;margin: 0px 0px 0px 4px;&quot;&gt;+ processarLote(entrada: String, saida: String): void&lt;br&gt;&lt;br&gt;- processarEscrever(folhaService: FolhaPagamentoService, funcionario: Funcionario, contexto: FolhaContexto, escritor: BufferedWriter, folhaDao: FolhaPagamentoDao): void&lt;br&gt;&lt;br&gt;- verificaFuncionario(funcDao: FuncionarioDao, dados: String[], dependenteDao: DependenteDao, deptoDao: DepartamentoDao): Funcionario&lt;br&gt;&lt;br&gt;- processarDependente(dados: String[], funcionario: Funcionario, dependentes: List&amp;lt;Dependente&amp;gt;, dependenteDao: DependenteDao): void&lt;br&gt;&lt;br&gt;- escreverCSV(folha: FolhaPagamento): String&lt;/p&gt;" vertex="1">
+          <mxGeometry height="190" width="569" x="66" y="377" as="geometry" />
+        </mxCell>
+        <mxCell id="3Q9Ldrdf9HsnMvp5bxsS-31" parent="3Q9Ldrdf9HsnMvp5bxsS-27" style="verticalAlign=top;align=left;overflow=fill;html=1;whiteSpace=wrap;rounded=1;" value="&lt;p style=&quot;margin:0px;margin-top:4px;text-align:center;&quot;&gt;&lt;b&gt;FolhaPagamentoService&lt;/b&gt;&lt;/p&gt;&lt;hr size=&quot;1&quot; style=&quot;border-style:solid;&quot;&gt;&lt;p style=&quot;margin:0px;margin-left:4px;&quot;&gt;&lt;br&gt;- INSS: CalcularINSS&lt;br&gt;- IRRF: CalcularIR&lt;/p&gt;&lt;hr size=&quot;1&quot; style=&quot;border-style: solid;&quot;&gt;&lt;p style=&quot;margin: 0px 0px 0px 4px;&quot;&gt;+ FolhaPagamentoService()&lt;br&gt;&lt;br&gt;+ folhaCalculo(funcionario: Funcionario): FolhaPagamento&lt;br&gt;&lt;br&gt;+ folhaCalculo(funcionario: Funcionario, contexto: FolhaContexto): FolhaPagamento&lt;/p&gt;" vertex="1">
+          <mxGeometry height="200" width="477.5" x="22.5" y="628" as="geometry" />
+        </mxCell>
+        <mxCell id="edge_LoteS_FolhaS" edge="1" parent="3Q9Ldrdf9HsnMvp5bxsS-27" source="3Q9Ldrdf9HsnMvp5bxsS-30" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;dashed=1;endArrow=open;endFill=0;" target="3Q9Ldrdf9HsnMvp5bxsS-31">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="label_LoteS_FolhaS" connectable="0" parent="edge_LoteS_FolhaS" style="edgeLabel;html=1;align=center;verticalAlign=middle;resizable=0;points=[];" value="Usa" vertex="1">
+          <mxGeometry relative="1" as="geometry">
+            <mxPoint as="offset" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="dao_dep_edge" edge="1" parent="1" source="3Q9Ldrdf9HsnMvp5bxsS-7" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;dashed=1;endArrow=open;endFill=0;" target="1eZil5OiU41Y6Tp0m1k4-7">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="dao_dep_label" connectable="0" parent="dao_dep_edge" style="edgeLabel;html=1;align=center;verticalAlign=middle;resizable=0;points=[];" value="Usa" vertex="1">
+          <mxGeometry relative="1" as="geometry">
+            <mxPoint as="offset" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="dao_depend_edge" edge="1" parent="1" source="3Q9Ldrdf9HsnMvp5bxsS-8" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;dashed=1;endArrow=open;endFill=0;" target="uJeLVWLu3xmzQLyKGZ_0-293">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="dao_depend_label" connectable="0" parent="dao_depend_edge" style="edgeLabel;html=1;align=center;verticalAlign=middle;resizable=0;points=[];" value="Usa" vertex="1">
+          <mxGeometry relative="1" as="geometry">
+            <mxPoint as="offset" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="dao_folha_edge" edge="1" parent="1" source="3Q9Ldrdf9HsnMvp5bxsS-9" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;dashed=1;endArrow=open;endFill=0;entryX=1.003;entryY=0.18;entryDx=0;entryDy=0;entryPerimeter=0;" target="1eZil5OiU41Y6Tp0m1k4-9">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="dao_folha_label" connectable="0" parent="dao_folha_edge" style="edgeLabel;html=1;align=center;verticalAlign=middle;resizable=0;points=[];" value="Usa" vertex="1">
+          <mxGeometry relative="1" as="geometry">
+            <mxPoint as="offset" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="dao_func_edge" edge="1" parent="1" source="3Q9Ldrdf9HsnMvp5bxsS-10" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;dashed=1;endArrow=open;endFill=0;entryX=0.75;entryY=1;entryDx=0;entryDy=0;" target="uJeLVWLu3xmzQLyKGZ_0-290">
+          <mxGeometry relative="1" as="geometry">
+            <Array as="points">
+              <mxPoint x="544" y="148" />
+              <mxPoint x="544" y="312" />
+              <mxPoint x="49" y="312" />
+            </Array>
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="dao_func_label" connectable="0" parent="dao_func_edge" style="edgeLabel;html=1;align=center;verticalAlign=middle;resizable=0;points=[];" value="Usa" vertex="1">
+          <mxGeometry relative="1" as="geometry">
+            <mxPoint as="offset" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="edge_IR_Imposto" edge="1" parent="1" source="3Q9Ldrdf9HsnMvp5bxsS-28" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;dashed=1;endArrow=block;endFill=0;" target="1eZil5OiU41Y6Tp0m1k4-17">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="label_IR_Imposto" connectable="0" parent="edge_IR_Imposto" style="edgeLabel;html=1;align=center;verticalAlign=middle;resizable=0;points=[];" value="Implementa" vertex="1">
+          <mxGeometry relative="1" as="geometry">
+            <mxPoint as="offset" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="edge_INSS_Imposto" edge="1" parent="1" source="3Q9Ldrdf9HsnMvp5bxsS-29" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;dashed=1;endArrow=block;endFill=0;" target="1eZil5OiU41Y6Tp0m1k4-17">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="label_INSS_Imposto" connectable="0" parent="edge_INSS_Imposto" style="edgeLabel;html=1;align=center;verticalAlign=middle;resizable=0;points=[];" value="Implementa" vertex="1">
+          <mxGeometry relative="1" as="geometry">
+            <mxPoint as="offset" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="edge_Dep_Parentesco" edge="1" parent="1" source="uJeLVWLu3xmzQLyKGZ_0-293" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;dashed=1;endArrow=open;endFill=0;" target="1eZil5OiU41Y6Tp0m1k4-14">
+          <mxGeometry relative="1" as="geometry">
+            <Array as="points">
+              <mxPoint x="546" y="-23" />
+              <mxPoint x="546" y="476" />
+              <mxPoint x="354" y="476" />
+            </Array>
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="label_Dep_Parentesco" connectable="0" parent="edge_Dep_Parentesco" style="edgeLabel;html=1;align=center;verticalAlign=middle;resizable=0;points=[];" value="Usa" vertex="1">
+          <mxGeometry relative="1" as="geometry">
+            <mxPoint as="offset" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="edge_FolhaS_Contexto" edge="1" parent="1" source="3Q9Ldrdf9HsnMvp5bxsS-31" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;dashed=1;endArrow=open;endFill=0;entryX=0;entryY=0.25;entryDx=0;entryDy=0;" target="urjcz5ThKflZJynyD9Vp-2">
+          <mxGeometry relative="1" as="geometry">
+            <Array as="points">
+              <mxPoint x="-1030" y="-399" />
+              <mxPoint x="-1030" y="590" />
+            </Array>
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="label_FolhaS_Contexto" connectable="0" parent="edge_FolhaS_Contexto" style="edgeLabel;html=1;align=center;verticalAlign=middle;resizable=0;points=[];" value="Usa" vertex="1">
+          <mxGeometry relative="1" as="geometry">
+            <mxPoint as="offset" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="edge_LoteS_FuncDao" edge="1" parent="1" source="3Q9Ldrdf9HsnMvp5bxsS-30" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;dashed=1;endArrow=open;endFill=0;exitX=1;exitY=0.75;exitDx=0;exitDy=0;entryX=1;entryY=0.25;entryDx=0;entryDy=0;" target="3Q9Ldrdf9HsnMvp5bxsS-10">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="label_LoteS_FuncDao" connectable="0" parent="edge_LoteS_FuncDao" style="edgeLabel;html=1;align=center;verticalAlign=middle;resizable=0;points=[];" value="Usa" vertex="1">
+          <mxGeometry relative="1" as="geometry">
+            <mxPoint as="offset" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="edge_Menu_FolhaS" edge="1" parent="1" source="3Q9Ldrdf9HsnMvp5bxsS-26" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;dashed=1;endArrow=open;endFill=0;exitX=0.25;exitY=0;exitDx=0;exitDy=0;" target="3Q9Ldrdf9HsnMvp5bxsS-31">
+          <mxGeometry relative="1" as="geometry">
+            <Array as="points">
+              <mxPoint x="902" y="416" />
+              <mxPoint x="579" y="416" />
+            </Array>
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="label_Menu_FolhaS" connectable="0" parent="edge_Menu_FolhaS" style="edgeLabel;html=1;align=center;verticalAlign=middle;resizable=0;points=[];" value="Usa" vertex="1">
+          <mxGeometry relative="1" as="geometry">
+            <mxPoint as="offset" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="edge_Menu_FuncDao" edge="1" parent="1" source="3Q9Ldrdf9HsnMvp5bxsS-26" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;dashed=1;endArrow=open;endFill=0;entryX=1;entryY=0.75;entryDx=0;entryDy=0;" target="3Q9Ldrdf9HsnMvp5bxsS-10">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="label_Menu_FuncDao" connectable="0" parent="edge_Menu_FuncDao" style="edgeLabel;html=1;align=center;verticalAlign=middle;resizable=0;points=[];" value="Usa" vertex="1">
+          <mxGeometry relative="1" as="geometry">
+            <mxPoint as="offset" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="edge_Hist_FolhaS" edge="1" parent="1" source="3Q9Ldrdf9HsnMvp5bxsS-25" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;dashed=1;endArrow=open;endFill=0;exitX=0;exitY=0.25;exitDx=0;exitDy=0;" target="3Q9Ldrdf9HsnMvp5bxsS-31">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="label_Hist_FolhaS" connectable="0" parent="edge_Hist_FolhaS" style="edgeLabel;html=1;align=center;verticalAlign=middle;resizable=0;points=[];" value="Usa" vertex="1">
+          <mxGeometry relative="1" as="geometry">
+            <mxPoint as="offset" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="edge_Hist_FuncDao" edge="1" parent="1" source="3Q9Ldrdf9HsnMvp5bxsS-25" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;dashed=1;endArrow=open;endFill=0;entryX=1;entryY=0.5;entryDx=0;entryDy=0;" target="3Q9Ldrdf9HsnMvp5bxsS-10">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="label_Hist_FuncDao" connectable="0" parent="edge_Hist_FuncDao" style="edgeLabel;html=1;align=center;verticalAlign=middle;resizable=0;points=[];" value="Usa" vertex="1">
+          <mxGeometry relative="1" as="geometry">
+            <mxPoint as="offset" />
+          </mxGeometry>
+        </mxCell>
+      </root>
+    </mxGraphModel>
+  </diagram>
+</mxfile>
