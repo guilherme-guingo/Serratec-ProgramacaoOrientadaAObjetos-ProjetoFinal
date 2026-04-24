@@ -97,7 +97,8 @@ public class FolhaLoteService {
 
 	}
 	
-	private Funcionario verificaFuncionario(FuncionarioDao funcDao, String[] dados, DependenteDao dependenteDao, DepartamentoDao deptoDao) throws SQLException, NumberFormatException, CPFInvalido, DataInvalida, NomeInvalido, SalarioInvalido {
+	private Funcionario verificaFuncionario(FuncionarioDao funcDao, String[] dados, DependenteDao dependenteDao, DepartamentoDao deptoDao) 
+			throws SQLException, NumberFormatException, CPFInvalido, DataInvalida, NomeInvalido, SalarioInvalido {
 		Funcionario funcExistente = funcDao.buscarPorCpf(dados[1]);
 		if(funcExistente == null) {
 			Departamento dep = deptoDao.buscarPorId(Integer.parseInt(dados[4]));
