@@ -1,12 +1,12 @@
-# 💰 Sistema de Cálculo - Folha de Pagamento
+# 💰 Sistema Folha de Pagamento - Serratec, POO
 ### Projeto realizado para o trabalho final da disciplina "Programação orientada a Objetos" da residencia do Serratec
 
 Aplicação desenvolvida em **Java** para automatizar o cálculo da folha de pagamento de funcionários, com suporte a persistência em banco de dados **PostgreSQL**. O sistema calcula automaticamente descontos de INSS e IRRF (considerando deduções por dependentes) seguindo as tabelas e alíquotas vigentes.
 
-## 👥 O Esquadrão (Equipe Desenvolvedora) e Responsabilidades
+## 👥 Membros do grupo e Responsabilidades
 
 * **Guilherme**
-    * *Responsabilidades:* [Insira aqui as tarefas, classes ou fluxos desenvolvidos]
+    * *Responsabilidades:* Montagem da arquitetura, refatoração e revisão do codigo completo, testagem manual do codigo, implementação dos fluxos 3 a 5 no menu.
 * **Patrick**
     * *Responsabilidades:* [Insira aqui as tarefas, classes ou fluxos desenvolvidos]
 * **Jose Ricardo**
@@ -49,28 +49,24 @@ Para garantir a organização e a escalabilidade do sistema, dividimos a aplica�
 
 ## 🛠️ Tecnologias Utilizadas
 
-* **Linguagem:** Java (Orientação a Objetos)
+* **Linguagem:** Java
 * **Banco de Dados:** PostgreSQL
 * **JDBC:** Driver de conexão `org.postgresql`
-* **Arquitetura:** MVC Adaptado (Model, View, DAO, Service, Utils, Exceptions)
-* **Padrões de Projeto:** Strategy (para cálculo de impostos)
+* **Arquitetura:** MVC Adaptado para consoles (Model, View, DAO, Service, Utils, Exceptions)
 
 ## ⚙️ Como configurar e rodar o projeto
 1. Preparando o Banco de Dados
    * Crie um banco de dados chamado **banco_folha**.
 
-   * Execute os scripts DDL inclusos no projeto.
-
-2. Configuração de Acesso
    * Para que o sistema conecte ao seu banco local, é necessário ajustar as credenciais no código de conexão:
 
    * Arquivo: Localize a classe **Conexao.java** no pacote **br.com.folhapag.config**.
 
-   * Ação: Altere a variável de senha (password) para a senha do seu PostgreSQL local.
+   * Ação: Altere a variável de senha para a senha do seu PostgreSQL local.
 
-3. Execução
+2. Execução
    * Execute a classe **Main.java** localizada no pacote raiz br.com.folhapag.
 
-   * Dados Prontos: O sistema já iniciará com alguns dados de exemplo (Departamentos/Cargos) carregados no banco.
+   * Dados Prontos: O sistema já iniciará com alguns dados de exemplo carregados no banco.
 
    * Teste de Arquivo: Para o cálculo em lote, utilize o arquivo dados.csv que se encontra na raiz da pasta do projeto.
