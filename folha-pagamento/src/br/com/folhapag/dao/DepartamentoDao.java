@@ -17,7 +17,6 @@ public class DepartamentoDao {
         this.conn = conn;
     }
 
-    // 1. Busca TODOS (Usado para relatórios e menus)
     public List<Departamento> listarTodos() throws SQLException {
         List<Departamento> departamentos = new ArrayList<>();
         String sql = "SELECT id, nome FROM departamento ORDER BY nome";
@@ -26,8 +25,6 @@ public class DepartamentoDao {
              ResultSet rs = ps.executeQuery()) {
             
             while (rs.next()) {
-                // Usando o construtor que aceita ID e Nome se você tiver, 
-                // ou mantendo seu padrão setNome
                 Departamento d = new Departamento(rs.getInt("id"));
                 d.setNome(rs.getString("nome"));
                 departamentos.add(d);
@@ -37,7 +34,6 @@ public class DepartamentoDao {
     }
 
     
-    // 2. Busca por NOME (Essencial para Importação de CSV)
     public int buscarIdPorNome(String nome) {
         String sql = "SELECT id FROM departamento WHERE UPPER(nome) = UPPER(?)";
         
@@ -55,7 +51,6 @@ public class DepartamentoDao {
         return -1;
     }
 
-    // 3. NOVO: Busca OBJETO por ID (Usado para preencher dados do Funcionário)
     public Departamento buscarPorId(int id) {
         String sql = "SELECT id, nome FROM departamento WHERE id = ?";
         

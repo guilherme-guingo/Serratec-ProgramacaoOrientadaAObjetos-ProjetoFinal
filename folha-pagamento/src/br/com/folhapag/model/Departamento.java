@@ -8,7 +8,6 @@ public class Departamento {
         this.nome = nome;
     }
 
-    // ADICIONE este para resolver o erro do DAO/CSV
     public Departamento(int id) {
         this.id = id;
     }
@@ -18,7 +17,6 @@ public class Departamento {
     	this.nome = nome;
     }
 
-    // O DAO precisa deste método para o ps.setInt(5, ...)
     public int getId() {
         return id;
     }
