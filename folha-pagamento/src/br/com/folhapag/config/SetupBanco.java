@@ -10,48 +10,62 @@ public class SetupBanco {
         String sql = """
             CREATE TABLE IF NOT EXISTS departamento (
                 id SERIAL PRIMARY KEY,
-                nome VARCHAR(100) NOT NULL
+                nome VARCHAR(100) NOT NULL UNIQUE
             );
-
+        
             CREATE TABLE IF NOT EXISTS funcionario (
-                cpf VARCHAR(14) PRIMARY KEY,
-                nome VARCHAR(150) NOT NULL,
+                cpf CHAR(11) PRIMARY KEY,
+                nome CHAR(150) NOT NULL,
                 nascimento DATE NOT NULL,
-                salario_bruto NUMERIC(10, 2) NOT NULL,
-                id_departamento INT REFERENCES departamento(id)
+                salario_bruto DECIMAL(10, 2) NOT NULL,
+                CONSTRAINT fk_depto FOREIGN KEY (id_departamento) REFERENCES departamento(id)
             );
-
+            
             CREATE TABLE IF NOT EXISTS dependente (
-                cpf VARCHAR(14) PRIMARY KEY,
-                nome VARCHAR(150) NOT NULL,
+                cpf CHAR(11) PRIMARY KEY,
+                nome CHAR(150) NOT NULL,
                 nascimento DATE NOT NULL,
                 parentesco VARCHAR(50) NOT NULL,
-                cpf_funcionario VARCHAR(14) REFERENCES funcionario(cpf)
+                cpf_funcionario VARCHAR(11) NOT NULLREFERENCES funcionario(cpf)
+            );
+            
+            CREATE TABLE dependente (
+            	    cpf CHAR(11) PRIMARY KEY,
+            	    nome VARCHAR(150) NOT NULL,
+            	    nascimento DATE NOT NULL,
+            	    parentesco VARCHAR(30) NOT NULL, 
+            	    cpf_funcionario CHAR(11) NOT NULL,
+            	    CONSTRAINT fk_func_dep FOREIGN KEY (cpf_funcionario) REFERENCES funcionario(cpf) ON DELETE CASCADE,
+            	    CONSTRAINT chk_parentesco CHECK (parentesco IN ('PAIS', 'FILHOS', 'CONJUGE', 'OUTROS'))
             );
 
             CREATE TABLE IF NOT EXISTS folha_pagamento (
                 id SERIAL PRIMARY KEY,
-                cpf_funcionario VARCHAR(14) REFERENCES funcionario(cpf),
+                cpf_funcionario CHAR(11) NOT NULL,
                 data_emissao DATE NOT NULL,
-                valor_inss NUMERIC(10, 2) NOT NULL,
-                valor_irrf NUMERIC(10, 2) NOT NULL,
-                salario_liquido NUMERIC(10, 2) NOT NULL
+                valor_inss DECIMAL(10, 2) NOT NULL,
+                valor_irrf DECIMAL(10, 2) NOT NULL,
+                salario_liquido DECIMAL(10, 2) NOT NULL,
+                CONSTRAINT fk_func_folha FOREIGN KEY (cpf_funcionario) REFERENCES funcionario(cpf) ON DELETE CASCADE
             );
-
+            
             INSERT INTO departamento (id, nome) VALUES 
-            (1, 'Recursos Humanos'), (2, 'Tecnologia'), (3, 'Financeiro'),
-            (4, 'Marketing'), (5, 'Logística'), (6, 'Vendas'),
-            (7, 'Diretoria'), (8, 'Operações')
-            ON CONFLICT (id) DO NOTHING;
+            (1, 'Recursos Humanos'),
+            (2, 'Tecnologia'), 
+            (3, 'Financeiro'),
+            (4, 'Marketing'), 
+            (5, 'Logística'), 
+            (6, 'Vendas'),
+            (7, 'Diretoria'), 
+            (8, 'Operações');
             
             --Inserção dos membros do grupo para testes
             INSERT INTO funcionario (nome, cpf, nascimento, salario_bruto, id_departamento) VALUES
-            ('Guilherme',    '10120230344', '1995-04-10', 2100.00, 8), -- Isenção Total
-            ('Patrick',      '40450560677', '1988-11-22', 3500.00, 2), -- Faixa 2 + 1 Dep.
+            ('Guilherme', '10120230344', '1995-04-10', 2100.00, 8), -- Isenção Total
+            ('Patrick', '40450560677', '1988-11-22', 3500.00, 2), -- Faixa 2 + 1 Dep
             ('Jose Ricardo', '20230340455', '1980-01-30', 9200.00, 1), -- Teto de INSS
-            ('Liliane',      '50560670788', '1990-06-12', 5800.00, 3), -- Faixa Média + 3 Deps.
-            ('Nicolas',      '30340450566', '1992-09-15', 4200.00, 5)  -- Comercial + 1 Dep.
-            ON CONFLICT (cpf) DO NOTHING;
+            ('Liliane', '50560670788', '1990-06-12', 5800.00, 3), -- Faixa Média + 3 Deps
+            ('Nicolas', '30340450566', '1992-09-15', 4200.00, 5); -- Comercial + 1 Dep
 
             --Inserção de Dependentes para os membros
             INSERT INTO dependente (nome, cpf, nascimento, parentesco, cpf_funcionario) VALUES
@@ -64,11 +78,8 @@ public class SetupBanco {
             ('Jorge Souza', '12123234354', '1988-10-05', 'CONJUGE', '50560670788'),
 
             --Dependente do Nicolas
-            ('Maria Santos', '60670780899', '2012-12-01', 'FILHOS', '30340450566')
-            ON CONFLICT (cpf) DO NOTHING;
+            ('Maria Santos', '60670780899', '2012-12-01', 'FILHOS', '30340450566');
             """;
-
-
 
         try (Connection conn = Conexao.getConexaoDB();
              Statement stmt = conn.createStatement()) {
